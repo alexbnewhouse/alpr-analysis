@@ -1,0 +1,7 @@
+requests>=2.31
+pandas>=2.2
+pyarrow>=18
+shapely>=2.0
+geopandas>=1.0
+openpyxl>=3.1
+pyreadr>=0.5      # only for --crime (reads Kaplan's UCR .rds files)

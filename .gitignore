@@ -4,3 +4,7 @@ data/raw/
 .Rhistory
 .Rproj.user/
 *.Rproj
+.venv/
+alpr_pipeline/data
+__pycache__/
+*.pyc

@@ -10,18 +10,28 @@ Working folder for **"What the Flock? A multilevel analysis of ALPR adoption, in
 ## Layout
 
 ```
+alpr_pipeline/    Python: OSM/DeFlock camera harvest → SQLite → census geography → tract panel
+                  (first-round work, Aug 2026; see its README and DATA_MANIFEST.md)
+alpr_pipeline/data  1 GB of harvests, exports, caches, panels — gitignored; symlink to ~/flock_research/alpr_pipeline/data
 notes/            audit of the draft, data-sourcing guide, MLM crash course, Mundlak review, references
-scripts/          numbered R drivers; reusable functions in scripts/R/
-tests/testthat/   unit tests on fixed-width fixtures (Rscript -e 'testthat::test_dir("tests/testthat")')
+scripts/          numbered drivers (R for covariate builds, Python for pipeline utilities); R functions in scripts/R/
+tests/testthat/   R unit tests on fixed-width fixtures (Rscript -e 'testthat::test_dir("tests/testthat")')
 data/raw/         downloads (gitignored; each script re-fetches what it needs)
 data/out/         the CSVs handed to Stone + a coverage report per build (committed)
+.venv/            Python env for alpr_pipeline (gitignored): python3 -m venv .venv && .venv/bin/pip install -r alpr_pipeline/requirements.txt
 ```
+
+Two upstream checkouts used as evidence for the data chain — the DeFlock site (`deflock/`) and the
+maps.deflock.org app (`deflockhopper_maps/`) — stay in `~/flock_research/` and are **not** vendored here;
+the pipeline README cites file paths in them.
 
 ## Builds
 
 | Script | Source | Outputs | Status |
 |---|---|---|---|
+| `alpr_pipeline` (`fetch`, `covariates`) | OSM via DeFlock derived feed + full Overpass harvest; ACS 2023; VEST 2020; AIP; Kaplan UCR 2023 | `alpr_cameras_us.parquet` (124,623 cameras), `alpr_us_full.sqlite` (Overpass, 20k editors), `tract_panel.parquet` (85,381 tracts, 62 cols) | ✅ 2026-08-04 snapshot; tests pass on macOS 2026-09-13 |
 | `scripts/01_cog2022_police.R` | 2022 Census of Governments, Finance individual-unit file | `place_police_2022.csv`, `cousub_police_2022.csv`, `county_sheriff_2022.csv`, `cog2022_coverage.md` | ✅ 2026-09-13 |
+| `scripts/02_pipeline_manifest.py` | the pipeline's data directory | `alpr_pipeline/DATA_MANIFEST.md` | ✅ 2026-09-13 |
 
 Run from the project root: `Rscript scripts/01_cog2022_police.R` (≈1 s after the 10 MB download). Needs R with readr, dplyr, tidyr, stringr; testthat for the tests.
 
