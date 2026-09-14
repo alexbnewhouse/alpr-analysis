@@ -1,0 +1,6 @@
+# raw downloads are re-fetchable by the scripts; outputs are committed
+data/raw/
+.DS_Store
+.Rhistory
+.Rproj.user/
+*.Rproj
