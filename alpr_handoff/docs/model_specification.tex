@@ -1,0 +1,135 @@
+% Model specification for the ALPR hurdle model.
+% Requires: \usepackage{amsmath, amssymb, booktabs}
+
+\section{Empirical specification}
+
+\subsection{Why a hurdle}
+
+Of the $84{,}415$ US Census tracts, $54.0\%$ contain no mapped ALPR camera. A
+Poisson distribution with the observed mean $\bar{y}=1.474$ implies only
+$22.9\%$ zeros, so the Poisson model is untenable. The count is also strongly
+overdispersed: the variance-to-mean ratio is $5.37$ unconditionally and remains
+$3.64$ among tracts with at least one camera, so the excess dispersion is not
+merely an artefact of the zero mass.
+
+We model the outcome as a \emph{hurdle} rather than a zero-inflated process
+\citep{Mullahy1986}. The distinction is substantive. A zero-inflated model
+posits two kinds of zero --- structural zeros that could never have been
+positive, mixed with sampling zeros --- whereas a hurdle posits a single
+process governing whether the count crosses zero and a second, separate process
+governing its magnitude once it has. Camera deployment matches the latter: an
+agency first decides whether to place any reader in a tract, and then how many.
+We refer to these as the \emph{adoption} and \emph{intensity} margins.
+
+\subsection{The model}
+
+Let $Y_i \in \{0,1,2,\dots\}$ denote the number of ALPR cameras in tract $i$,
+and let $c(i)$ index the county containing tract $i$. Write $\pi_i =
+\Pr(Y_i > 0 \mid \mathbf{x}_i)$ for the adoption probability and $\mu_i$ for
+the conditional mean of the untruncated count process. The hurdle density is
+
+\begin{equation}
+\Pr(Y_i = y \mid \mathbf{x}_i) =
+\begin{cases}
+1 - \pi_i, & y = 0,\\[6pt]
+\pi_i \, \dfrac{f_{\mathrm{NB}}(y \mid \mu_i, \theta)}
+               {1 - f_{\mathrm{NB}}(0 \mid \mu_i, \theta)}, & y = 1,2,\dots
+\end{cases}
+\label{eq:hurdle}
+\end{equation}
+
+where $f_{\mathrm{NB}}$ is the negative binomial (NB2) probability mass
+function with mean $\mu$ and dispersion $\theta$,
+
+\begin{equation}
+f_{\mathrm{NB}}(y \mid \mu, \theta) =
+\frac{\Gamma(y + \theta)}{\Gamma(\theta)\, y!}
+\left(\frac{\theta}{\theta + \mu}\right)^{\!\theta}
+\left(\frac{\mu}{\theta + \mu}\right)^{\!y},
+\qquad
+f_{\mathrm{NB}}(0 \mid \mu, \theta) =
+\left(\frac{\theta}{\theta + \mu}\right)^{\!\theta}.
+\end{equation}
+
+Division by $1 - f_{\mathrm{NB}}(0 \mid \mu_i,\theta)$ in
+\eqref{eq:hurdle} renormalises the negative binomial over the strictly positive
+integers. This \emph{zero truncation} is essential: fitting an untruncated
+negative binomial to the positive subsample is a misspecification, and in these
+data it attenuates every slope by roughly one half and biases $\theta$ by a
+factor of five.
+
+\paragraph{Adoption margin.} The probability of any camera is modelled as a
+logit with a county-specific random intercept,
+\begin{equation}
+\operatorname{logit}(\pi_i)
+ = \alpha + \mathbf{x}_i^{\prime}\boldsymbol{\beta} + u_{c(i)},
+\qquad u_c \sim \mathcal{N}(0, \sigma_u^2).
+\label{eq:part1}
+\end{equation}
+
+\paragraph{Intensity margin.} Conditional on $Y_i>0$, the count follows a
+zero-truncated NB2 with its own county random intercept,
+\begin{equation}
+\log(\mu_i)
+ = \gamma + \mathbf{x}_i^{\prime}\boldsymbol{\delta} + v_{c(i)},
+\qquad v_c \sim \mathcal{N}(0, \sigma_v^2).
+\label{eq:part2}
+\end{equation}
+
+The two margins share the covariate vector $\mathbf{x}_i$ but not its
+coefficients: $\boldsymbol{\beta} \neq \boldsymbol{\delta}$ is the object of
+interest, since a covariate may govern whether a tract is surveilled at all
+without governing how heavily.
+
+\subsection{Estimation}
+
+The hurdle log-likelihood separates additively,
+\begin{equation}
+\ell(\boldsymbol{\beta}, \boldsymbol{\delta}, \theta)
+ = \underbrace{\sum_{i} \Big[ \mathbb{1}\{y_i>0\} \log \pi_i
+     + \mathbb{1}\{y_i=0\} \log (1-\pi_i) \Big]}_{\ell_1(\boldsymbol{\beta})}
+ + \underbrace{\sum_{i:\, y_i>0} \Big[ \log f_{\mathrm{NB}}(y_i \mid \mu_i,\theta)
+     - \log\big(1 - f_{\mathrm{NB}}(0 \mid \mu_i,\theta)\big) \Big]}_{\ell_2(\boldsymbol{\delta},\theta)} .
+\label{eq:loglik}
+\end{equation}
+Because $\ell_1$ and $\ell_2$ share no parameters, the two margins may be
+estimated separately without loss of efficiency. We fit both by maximum
+likelihood using Laplace approximation for the random intercepts.
+
+\subsection{Covariates}
+
+$\mathbf{x}_i$ comprises four blocks.
+
+\begin{description}
+  \item[Scale and exposure.] $\log(\text{land area})$ and
+    $\log(\text{population density})$, the latter entered quadratically.
+    Log population is deliberately excluded: it is the exact sum of the other
+    two, so entering all three would be perfectly collinear, and
+    $\{\log \text{area}, \log \text{density}\}$ spans the same space. The
+    quadratic is required because the share of zero-camera tracts is
+    non-monotone in density --- $63.2\%$ in the sparsest quintile, $45.0\%$ in
+    the middle, $63.1\%$ in the densest --- so a linear term would average two
+    opposite tails into a single misleading slope.
+  \item[Economic.] $\log(\text{median household income})$ and the poverty rate.
+    Both are retained despite correlating at $-0.63$; per-capita income, median
+    home value, median rent and educational attainment are excluded from the
+    main specification because each correlates above $0.69$ with median income
+    and they describe one latent factor rather than several.
+  \item[Composition.] Shares Black, Hispanic and Asian, with share White alone
+    as the omitted reference. Race shares are compositional and sum to
+    approximately one; entering all of them is singular.
+  \item[Other.] Renter-occupied share and median age. Owner-occupied share is
+    the exact complement of renter share and is never entered jointly.
+\end{description}
+
+\paragraph{County effects.} County enters both margins as a random intercept.
+This is a concession to the truncated likelihood: no available estimator absorbs
+several thousand fixed effects within a zero-truncated negative binomial. We
+therefore report the adoption margin a second time with true county fixed
+effects and standard errors clustered by county, and compare.
+
+\paragraph{Interpretation.} We treat the estimates as descriptive rather than
+causal. Cameras are sited by law-enforcement agencies, not by tracts; tract
+characteristics proxy for what an agency observed when siting, and the agency,
+not the tract, is the decision unit. The coefficients answer: conditional on
+county, what kinds of tracts contain cameras?

@@ -1,0 +1,82 @@
+% Covariates entering the tract-level hurdle model.
+% Requires: \usepackage{booktabs, array}
+
+\begin{table}[htbp]
+\centering
+\footnotesize
+\setlength{\tabcolsep}{5pt}
+\renewcommand{\arraystretch}{1.2}
+\caption{Covariates in the tract-level hurdle model}
+\label{tab:model-covariates}
+\begin{tabular}{@{}p{0.24\textwidth} p{0.42\textwidth} p{0.26\textwidth}@{}}
+\toprule
+\textbf{Variable} & \textbf{Definition} & \textbf{Source} \\
+\midrule
+
+\multicolumn{3}{@{}l}{\textit{Exposure --- opportunity for a camera to exist}} \\
+\addlinespace
+\texttt{log\_road\_km\_arterial} & Log kilometres of primary (S1100) and secondary (S1200) roadway in the tract & TIGER/Line 2024 Primary \& Secondary Roads \\
+\texttt{log\_area} & Log land area in km$^2$, water excluded & TIGER/Line 2024 (\texttt{ALAND}) \\
+\addlinespace
+
+\multicolumn{3}{@{}l}{\textit{Urbanicity}} \\
+\addlinespace
+\texttt{log\_density} & Log residents per km$^2$ & ACS B01003 / TIGER \\
+\texttt{log\_density\textasciicircum 2} & Quadratic term & Derived \\
+\addlinespace
+
+\multicolumn{3}{@{}l}{\textit{Economic}} \\
+\addlinespace
+\texttt{log\_income} & Log median household income & ACS 5-yr B19013\_001E \\
+\texttt{pct\_below\_poverty} & Share below the poverty line, over the poverty universe & ACS B17001 (002/001) \\
+\addlinespace
+
+\multicolumn{3}{@{}l}{\textit{Composition (White alone omitted as reference)}} \\
+\addlinespace
+\texttt{pct\_black} & Share Black alone & ACS B02001 (003/001) \\
+\texttt{pct\_hispanic} & Share Hispanic or Latino & ACS B03003 (003) / B02001 (001) \\
+\texttt{pct\_asian} & Share Asian alone & ACS B02001 (005/001) \\
+\addlinespace
+
+\multicolumn{3}{@{}l}{\textit{Other}} \\
+\addlinespace
+\texttt{pct\_renter\_occupied} & Share of occupied units that are renter-occupied & ACS B25003 (003/001) \\
+\texttt{median\_age} & Median age & ACS B01002\_001E \\
+\addlinespace
+
+\multicolumn{3}{@{}l}{\textit{Grouping}} \\
+\addlinespace
+County & County intercept, both margins & TIGER (\texttt{tract\_geoid[1:5]}) \\
+\bottomrule
+\end{tabular}
+
+\vspace{0.6em}
+\begin{minipage}{\textwidth}
+\footnotesize
+\textit{Notes.} All ACS quantities are 2023 5-year estimates. Each share is
+computed over its own ACS universe rather than over total population.
+
+\textbf{Log population is deliberately excluded.} It is the exact sum of
+\texttt{log\_density} and \texttt{log\_area}, so entering all three would be
+perfectly collinear; the two retained terms span the same space.
+
+\textbf{Density enters quadratically} because the share of tracts with no
+camera is non-monotone in density --- 63.2\% in the sparsest quintile, 45.0\%
+in the middle, 63.1\% in the densest. A linear term would average two opposite
+tails into a single misleading slope.
+
+\textbf{Race shares are compositional} and sum to approximately one, so
+\texttt{pct\_white} is omitted as the reference category; entering all shares
+is singular.
+
+\textbf{Owner-occupied share is the exact complement} of renter share and is
+never entered jointly.
+
+Variables excluded on collinearity grounds, each correlating above $0.69$ with
+median household income and describing the same latent factor: per-capita
+income, median home value, median gross rent, and share with a bachelor's
+degree or higher. Variables excluded as bad controls, being consequences of
+urban form that would absorb the density coefficient: share of households with
+no vehicle, share driving alone, and share using public transit.
+\end{minipage}
+\end{table}

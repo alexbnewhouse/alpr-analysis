@@ -1,0 +1,61 @@
+% Summary statistics for units that paused, cancelled or banned ALPRs.
+% Requires: \usepackage{booktabs, array}
+\begin{table}[htbp]
+\centering\footnotesize
+\caption{Who pauses or cancels ALPR programmes? Summary statistics}
+\label{tab:decision_descriptives}
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{@{}lrrrrr@{}}
+\toprule
+ & \multicolumn{2}{c}{\textbf{Paused / cancelled}} & \multicolumn{2}{c}{\textbf{Retained}} & \\
+\cmidrule(lr){2-3}\cmidrule(lr){4-5}
+ & Mean & (SD) & Mean & (SD) & Diff. \\
+\midrule
+\multicolumn{6}{@{}l}{\textit{Panel A. Municipalities}} \\[2pt]
+Population (000s) & 120.78 & (380.65) & 24.01 & (120.03) & +96.77 \\
+ALPR cameras & 41.91 & (99.43) & 11.71 & (40.25) & +30.20 \\
+Arterial road (km) & 113.09 & (217.75) & 39.78 & (91.13) & +73.31 \\
+Employment ratio & 0.53 & (0.12) & 0.45 & (0.19) & +0.08 \\
+Median HH income (000s) & 80.35 & (32.13) & 83.51 & (41.23) & -3.16 \\
+Below poverty (\%) & 13.84 & (6.78) & 12.84 & (9.53) & +1.00 \\
+Share Black (\%) & 7.71 & (10.62) & 10.80 & (16.89) & -3.09 \\
+Share Hispanic (\%) & 15.56 & (15.80) & 15.05 & (18.92) & +0.50 \\
+Trump 2020 share (\%) & 36.78 & (18.52) & 51.68 & (18.66) & -14.91 \\
+AIP ideology & -0.15 & (0.23) & -0.00 & (0.20) & -0.15 \\
+Property crime / 1{,}000 & 26.43 & (16.51) & 21.88 & (23.83) & +4.55 \\
+Has own police dept & 0.95 & (0.21) & 0.61 & (0.49) & +0.34 \\
+Incorporated & 0.97 & (0.17) & 0.72 & (0.45) & +0.25 \\
+County tier exists & 0.92 & (0.27) & 0.95 & (0.21) & -0.03 \\
+County also decided & 0.09 & (0.28) & 0.02 & (0.13) & +0.07 \\
+Mayor-council form & 0.46 & (0.50) & 0.36 & (0.48) & +0.10 \\
+At-large seats & 0.48 & (0.50) & 0.53 & (0.50) & -0.05 \\
+Has initiative & 0.81 & (0.39) & 0.68 & (0.47) & +0.13 \\
+\addlinespace Units & \multicolumn{2}{c}{128} & \multicolumn{2}{c}{8,114} & \\
+\addlinespace
+\multicolumn{6}{@{}l}{\textit{Panel B. Counties}} \\[2pt]
+Population (000s) & 237.65 & (380.40) & 139.89 & (386.47) & +97.76 \\
+ALPR cameras & 106.29 & (217.97) & 54.12 & (171.62) & +52.17 \\
+Arterial road (km) & 677.62 & (487.03) & 608.07 & (486.65) & +69.54 \\
+Employment ratio & 0.42 & (0.09) & 0.44 & (0.08) & -0.02 \\
+Median HH income (000s) & 76.11 & (23.58) & 67.88 & (18.02) & +8.23 \\
+Below poverty (\%) & 11.32 & (3.71) & 13.97 & (5.49) & -2.66 \\
+Share Black (\%) & 4.08 & (4.68) & 9.96 & (14.00) & -5.88 \\
+Trump 2020 share (\%) & 59.02 & (17.62) & 63.21 & (16.06) & -4.18 \\
+AIP ideology & 0.12 & (0.23) & 0.19 & (0.18) & -0.07 \\
+Violent crime / 1{,}000 & 2.53 & (2.35) & 2.75 & (2.18) & -0.22 \\
+Property crime / 1{,}000 & 13.88 & (8.95) & 14.12 & (12.73) & -0.24 \\
+Sheriff agencies & 1.00 & (0.00) & 0.97 & (0.23) & +0.03 \\
+\addlinespace Units & \multicolumn{2}{c}{28} & \multicolumn{2}{c}{2,244} & \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\noindent\begin{minipage}{\textwidth}\footnotesize
+\textit{Notes.} The comparison group is the \emph{risk set} --- units with at least one mapped ALPR camera, which are the only ones able to reverse course --- not all units. A place with no cameras has nothing to cancel, so including such places would inflate every difference.
+
+Municipal decisions are the union of two independently constructed sources: a Nexis Uni search of local news, and the DeFlock project's register. They overlap on only 15 of 151 places, and the overlap is size-graded --- median population 61,000 in both sources against 34,000 in news alone and 18,000 in DeFlock alone --- so either source used by itself would understate the number of small municipalities that acted.
+
+\textbf{The register is not yet verified.} No row has been confirmed against its underlying source document, and roughly a quarter of the news-derived entries are expected to be false positives on manual review. Differences are reported without significance tests for that reason; formal inference awaits verification.
+
+Governance variables cover cities above 20,000 population only (Tausanovitch and Warshaw), so those rows describe a large-city subsample. `County tier exists' indicates a county sheriff agency in the FBI roster: where none exists --- Connecticut, Massachusetts, Rhode Island, Alaska, Hawaii, DC and Delaware --- a county-level decision is structurally impossible rather than merely unobserved.
+\end{minipage}

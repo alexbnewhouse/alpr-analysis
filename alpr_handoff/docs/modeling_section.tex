@@ -1,0 +1,152 @@
+% Modeling strategy section.
+% Requires: \usepackage{amsmath, amssymb}
+
+\section{Modeling strategy}
+
+\subsection{The outcome}
+
+The dependent variable is the number of automated license plate readers
+recorded in a Census tract. Across the 84{,}415 tracts in the contiguous United
+States the count has mean $1.47$ and variance $7.92$, and $54.0$ percent of
+tracts contain none. Conditional on containing at least one, the mean is $3.20$
+and the variance $11.67$.
+
+Two features of this distribution constrain the choice of model. The first is
+overdispersion: the variance-to-mean ratio is $5.37$ unconditionally, and
+remains $3.64$ among tracts with at least one camera, so the excess dispersion
+is not merely an artefact of the mass at zero. The second is the size of that
+mass. A Poisson distribution with the observed mean implies a zero share of
+$22.9$ percent against the $54.0$ percent observed, a discrepancy of thirty-one
+percentage points that no adjustment to the mean function can absorb.
+
+\subsection{Why a hurdle rather than a zero-inflated model}
+
+Both hurdle and zero-inflated specifications accommodate more zeros than a
+single count process would generate, but they embody different substantive
+claims. A zero-inflated model posits two kinds of zero --- structural zeros
+that could never have been positive, mixed with sampling zeros drawn from the
+count process. A hurdle posits a single process governing whether the count
+crosses zero, and a second, separate process governing its magnitude once it
+has \citep{Mullahy1986}.
+
+The deployment of license plate readers matches the hurdle. An agency first
+decides whether to place any reader in a given area, and then how many; there
+is no natural class of tract that could never receive a camera, since almost
+any tract with a road could. We refer to these two decisions as the
+\emph{adoption} and \emph{intensity} margins.
+
+The distinction is not merely conceptual. In our data the poverty rate enters
+the two margins with opposite signs --- negative on adoption, positive on
+intensity. A single count model averages these into approximate zero and would
+support the conclusion that poverty is unrelated to surveillance. The hurdle
+recovers both.
+
+We note that the two specifications are, on these data, statistically
+indistinguishable: a zero-inflated negative binomial and a hurdle negative
+binomial fit with the same covariates differ by two AIC points on $82{,}916$
+observations. The choice between them therefore rests on the substantive
+argument above rather than on fit.
+
+\subsection{Specification}
+
+Let $Y_i$ denote the camera count in tract $i$, located in county $c(i)$. Write
+$\pi_i$ for the probability that $Y_i$ is positive and $\mu_i$ for the
+conditional mean of the underlying count process. The hurdle density is
+
+\begin{equation}
+\Pr(Y_i = y) =
+\begin{cases}
+1 - \pi_i, & y = 0,\\[6pt]
+\pi_i \, \dfrac{f_{\mathrm{NB}}(y \mid \mu_i, \theta)}
+               {1 - f_{\mathrm{NB}}(0 \mid \mu_i, \theta)}, & y \geq 1,
+\end{cases}
+\label{eq:hurdle}
+\end{equation}
+
+where $f_{\mathrm{NB}}$ is the negative binomial (NB2) mass function. The
+adoption margin is a logit,
+\begin{equation}
+\operatorname{logit}(\pi_i) = \alpha + \mathbf{x}_i'\boldsymbol{\beta} + u_{c(i)},
+\end{equation}
+and the intensity margin a zero-truncated NB2,
+\begin{equation}
+\log(\mu_i) = \gamma + \mathbf{x}_i'\boldsymbol{\delta} + v_{c(i)}.
+\end{equation}
+
+The two margins share the covariate vector but not its coefficients:
+$\boldsymbol{\beta} \neq \boldsymbol{\delta}$ is the object of interest, since a
+covariate may govern whether an area is surveilled at all without governing how
+heavily. Because the hurdle log-likelihood separates additively into a term in
+$\boldsymbol{\beta}$ and a term in $(\boldsymbol{\delta}, \theta)$, the two
+margins may be estimated separately without loss of efficiency.
+
+\subsection{Estimators considered and rejected}
+
+Three natural approaches fail, each for a different reason, and the failures
+motivate the estimator we adopt.
+
+\paragraph{Poisson.} Rejected on the evidence above. Fitted with our full
+covariate set the Poisson hurdle returns an AIC of $276{,}879$ against
+$251{,}212$ for the negative binomial equivalent. Its standard errors would be
+understated by roughly a factor of $\sqrt{5.37} \approx 2.3$.
+
+\paragraph{Standard hurdle software without geographic controls.} The
+conventional implementation \citep[\texttt{pscl};][]{Zeileis2008} estimates
+both margins by maximising a likelihood over a dense design matrix. Absorbing
+county effects would require some $2{,}270$ indicator variables over $82{,}728$
+observations, and unlike the linear case there is no within-transformation that
+sweeps them out of a nonlinear model. Estimated without county controls, the
+coefficient on share Black is $0.989$; with them it is $0.495$. Half of the
+apparent association is between-county sorting, so leaving geography
+uncontrolled is not a viable option.
+
+\paragraph{Fixed-effects count software applied to the positive subsample.} A
+tempting shortcut is to estimate the intensity margin by applying a
+fixed-effects negative binomial to the tracts with $Y_i > 0$. This is a
+misspecification rather than an approximation. The second margin of a hurdle is
+a \emph{zero-truncated} distribution, and fitting an untruncated negative
+binomial to truncated data attenuates every slope by roughly half and biases
+the dispersion parameter by a factor of five in our data (for example, the
+coefficient on renter-occupied share is $0.93$ untruncated against $1.42$
+correctly truncated; $\theta$ is $2.79$ against $0.53$). No available
+fixed-effects estimator implements a zero-truncated negative binomial family.
+
+\subsection{Estimation: correlated random effects}
+
+We therefore estimate both margins by maximum likelihood with a county random
+intercept, augmented with the county mean of every covariate --- the
+correlated-random-effects device of \citet{Mundlak1978}. Writing the county
+effect as a function of the covariate means,
+$\alpha_c = \bar{\mathbf{x}}_c'\boldsymbol{\gamma} + \omega_c$, and substituting
+into the model, the coefficient on $\mathbf{x}_i$ becomes the within-county
+effect. The random-effects assumption is thereby relaxed to hold conditional on
+the county means, and the estimand is that of fixed effects while the
+likelihood remains one that admits zero truncation.
+
+We verify the device rather than assume it. On the adoption margin, where
+conventional fixed effects are estimable, the two coefficient vectors correlate
+at $0.9999$ with a median absolute difference of $3.0$ percent. The
+correlated-random-effects estimator additionally retains the $1{,}092$ counties
+($4{,}656$ tracts) that fixed effects must discard for exhibiting no
+within-county variation in the outcome.
+
+In reporting, the plain covariates are interpreted as within-county effects;
+the county-mean terms are nuisance parameters absorbing between-county
+variation and are estimated but not tabulated.
+
+\subsection{Interpretation}
+
+We treat the estimates as descriptive rather than causal. Cameras are sited by
+law enforcement agencies and private operators, not by tracts; tract
+characteristics proxy for what a decision-maker observed when siting, and the
+agency rather than the tract is the decision unit. The coefficients answer a
+conditional descriptive question: within a county, what kinds of tracts contain
+cameras, and how many?
+
+Two limitations bear directly on that reading. First, the outcome records
+cameras that volunteers have \emph{mapped}, not cameras that exist; because
+mapping effort plausibly rises with income and education, coefficients on those
+covariates are partly a discovery artefact. Second, roughly fourteen percent of
+the cameras whose operator is identifiable belong to retail chains, whose
+siting is a corporate decision unrelated to local policing; where operator
+information permits, we report estimates separately by operator type.

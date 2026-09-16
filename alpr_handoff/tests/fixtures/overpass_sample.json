@@ -1,0 +1,8 @@
+{"version": 0.6, "elements": [
+ {"type":"node","id":1001,"lat":35.77,"lon":-78.63,"timestamp":"2025-03-14T10:02:00Z","version":3,
+  "tags":{"man_made":"surveillance","surveillance:type":"ALPR","manufacturer":"Flock Safety",
+          "operator":"Raleigh Police Department","operator:type":"police department",
+          "camera:type":"fixed","direction":"180","surveillance":"public","surveillance:zone":"traffic"}},
+ {"type":"node","id":1002,"lat":35.22,"lon":-80.84,"timestamp":"2026-01-02T08:00:00Z","version":1,
+  "tags":{"man_made":"surveillance","surveillance:type":"ALPR","camera:type":"fixed"}}
+]}

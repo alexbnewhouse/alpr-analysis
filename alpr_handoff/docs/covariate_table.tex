@@ -1,0 +1,133 @@
+% Covariate inventory for the ALPR adoption study.
+% Requires: \usepackage{booktabs, longtable, array}
+% Optional: \usepackage[table]{xcolor}
+
+\begingroup
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.15}
+
+\begin{longtable}{@{}p{0.20\textwidth} p{0.30\textwidth} p{0.24\textwidth} p{0.18\textwidth}@{}}
+\caption{Variable inventory: source and construction status}
+\label{tab:covariates} \\
+\toprule
+\textbf{Variable} & \textbf{Description} & \textbf{Source} & \textbf{Status} \\
+\midrule
+\endfirsthead
+
+\multicolumn{4}{@{}l}{\textit{Table \ref{tab:covariates} continued}} \\
+\toprule
+\textbf{Variable} & \textbf{Description} & \textbf{Source} & \textbf{Status} \\
+\midrule
+\endhead
+
+\midrule \multicolumn{4}{r@{}}{\textit{continued}} \\
+\endfoot
+\bottomrule
+\endlastfoot
+
+\multicolumn{4}{@{}l}{\textbf{A. Outcome variables}} \\
+\addlinespace
+\texttt{n\_cameras}    & ALPR cameras in unit; zero-filled over full universe & OpenStreetMap (Overpass) & Constructed \\
+\texttt{n\_flock}      & Subset with Flock Safety vendor tag & OpenStreetMap & Constructed \\
+\texttt{has\_camera}   & Indicator, $\texttt{n\_cameras}>0$; Part 1 outcome & OpenStreetMap & Constructed \\
+\texttt{n\_police}     & Cameras with law-enforcement operator string & OpenStreetMap \texttt{operator} & Constructed \\
+\texttt{n\_retail}     & Cameras with retail-chain operator string & OpenStreetMap \texttt{operator} & Constructed \\
+\texttt{cameras\_per\_10k} & Cameras per 10,000 residents & Derived & Constructed \\
+\texttt{cameras\_per\_sqkm} & Cameras per km$^2$ of land & Derived & Constructed \\
+\addlinespace
+
+\multicolumn{4}{@{}l}{\textbf{B. Geographic identifiers}} \\
+\addlinespace
+\texttt{tract\_geoid}  & 11-digit Census tract GEOID & TIGER/Line 2024 & Source \\
+\texttt{county\_fips}  & 5-digit county FIPS & TIGER/Line 2024 & Source \\
+\texttt{place\_geoid}  & 7-digit Census place GEOID (centroid assignment) & TIGER/Line 2024 & Constructed \\
+\texttt{zcta}          & 5-digit ZIP Code Tabulation Area & TIGER/Line 2024 & Source \\
+\addlinespace
+
+\multicolumn{4}{@{}l}{\textbf{C. Exposure and scale}} \\
+\addlinespace
+\texttt{population}       & Total population & ACS 5-yr B01003\_001E & Source \\
+\texttt{land\_area\_sqkm} & Land area, km$^2$ (excludes water) & TIGER \texttt{ALAND} & Constructed \\
+\texttt{pop\_density\_sqkm} & Residents per km$^2$ & Derived & Constructed \\
+\addlinespace
+
+\multicolumn{4}{@{}l}{\textbf{D. Income and wealth}} \\
+\addlinespace
+\texttt{median\_hh\_income}  & Median household income & ACS B19013\_001E & Source \\
+\texttt{per\_capita\_income} & Per capita income & ACS B19301\_001E & Source \\
+\texttt{gini\_index}         & Gini index of income inequality & ACS B19083\_001E & Source \\
+\texttt{median\_home\_value} & Median owner-occupied home value & ACS B25077\_001E & Source \\
+\texttt{median\_gross\_rent} & Median gross rent & ACS B25064\_001E & Source \\
+\texttt{pct\_below\_poverty} & Share below poverty line & ACS B17001 (002/001) & Constructed \\
+\addlinespace
+
+\multicolumn{4}{@{}l}{\textbf{E. Race, ethnicity, nativity}} \\
+\addlinespace
+\texttt{pct\_white}        & Share White alone (omitted reference) & ACS B02001 (002/001) & Constructed \\
+\texttt{pct\_black}        & Share Black alone & ACS B02001 (003/001) & Constructed \\
+\texttt{pct\_amerindian}   & Share American Indian / Alaska Native alone & ACS B02001 (004/001) & Constructed \\
+\texttt{pct\_asian}        & Share Asian alone & ACS B02001 (005/001) & Constructed \\
+\texttt{pct\_two\_or\_more}& Share two or more races & ACS B02001 (008/001) & Constructed \\
+\texttt{pct\_hispanic}     & Share Hispanic or Latino & ACS B03003 (003) / B02001 (001) & Constructed \\
+\texttt{pct\_foreign\_born}& Share foreign born & ACS B05002 (013/001) & Constructed \\
+\addlinespace
+
+\multicolumn{4}{@{}l}{\textbf{F. Education, employment, age}} \\
+\addlinespace
+\texttt{pct\_bachelors\_plus} & Share of adults 25+ with BA or higher & ACS B15003 (022+023+024+025 / 001) & Constructed \\
+\texttt{pct\_unemployed}      & Share of civilian labour force unemployed & ACS B23025 (005/003) & Constructed \\
+\texttt{median\_age}          & Median age & ACS B01002\_001E & Source \\
+\addlinespace
+
+\multicolumn{4}{@{}l}{\textbf{G. Housing tenure and transport}} \\
+\addlinespace
+\texttt{pct\_renter\_occupied} & Share renter-occupied units & ACS B25003 (003/001) & Constructed \\
+\texttt{pct\_owner\_occupied}  & Share owner-occupied (exact complement) & ACS B25003 (002/001) & Constructed \\
+\texttt{pct\_no\_vehicle}      & Share of households with no vehicle & ACS B25044 (003+010 / 001) & Constructed \\
+\texttt{pct\_drove\_alone}     & Share of workers driving alone & ACS B08301 (003/001) & Constructed \\
+\texttt{pct\_public\_transit}  & Share of workers using public transit & ACS B08301 (010/001) & Constructed \\
+\addlinespace
+
+\multicolumn{4}{@{}l}{\textbf{H. Crime}} \\
+\addlinespace
+\texttt{violent\_crime\_county}  & Mean annual violent offences 2019--23, county & FBI CDE (UCR/NIBRS) & Constructed \\
+\texttt{property\_crime\_county} & Mean annual property offences, county & FBI CDE & Constructed \\
+\texttt{violent\_crime\_place}   & Mean annual violent offences, municipality & FBI CDE & Constructed \\
+\texttt{property\_crime\_place}  & Mean annual property offences, municipality & FBI CDE & Constructed \\
+\texttt{n\_agencies\_county}     & Reporting agencies contributing to county total & FBI CDE & Constructed \\
+\addlinespace
+
+\multicolumn{4}{@{}l}{\textbf{I. Not yet built --- required}} \\
+\addlinespace
+\texttt{road\_km\_arterial} & Arterial road length in unit (MTFCC S1100/S1200) & TIGER/Line Roads & \textbf{To build} \\
+\texttt{road\_km\_local}    & Local road length (MTFCC S1400) & TIGER/Line Roads & \textbf{To build} \\
+\texttt{intersection\_count}& Road intersections, proxy for siting opportunities & TIGER/Line Roads & \textbf{To build} \\
+\addlinespace
+
+\multicolumn{4}{@{}l}{\textbf{J. Not yet built --- desirable}} \\
+\addlinespace
+\texttt{agency\_adopted}    & Whether the policing agency deploys Flock & EFF Atlas of Surveillance & \textbf{To build} \\
+\texttt{osm\_total\_nodes}  & Total OSM nodes, quarterly (mapping-effort denominator) & ohsome API & \textbf{To build} \\
+\texttt{osm\_contributors}  & Distinct OSM contributors, quarterly & ohsome API & \textbf{To build} \\
+\texttt{aadt}               & Annual average daily traffic & State DOT / HPMS & \textbf{To build} \\
+
+\end{longtable}
+
+\vspace{0.5em}
+\noindent\footnotesize
+\textit{Notes.} ``Source'' denotes a variable taken directly from the provider;
+``Constructed'' denotes one we derive. All ACS estimates are 2023 5-year.
+Each share is computed over its own ACS universe --- education over adults
+25 and older, poverty over the poverty universe, commute shares over workers
+--- rather than over total population. Census jam values ($-666666666$ and
+similar) are recoded to missing. Race shares are compositional and sum to
+approximately one, so \texttt{pct\_white} is omitted as the reference category
+in estimation. \texttt{pct\_owner\_occupied} and \texttt{pct\_renter\_occupied}
+are exact complements and are never entered jointly. Crime is measured at the
+jurisdiction that reports it and broadcast to smaller units; it does not vary
+within a county. The raw ACS numerators and denominators behind each derived
+share (\texttt{white\_alone}, \texttt{race\_total}, \texttt{poverty\_count},
+\texttt{edu\_total}, and so on) are retained in the data files so that any
+share can be re-based, but are omitted from this table for brevity.
+\endgroup

@@ -1,0 +1,14 @@
+city,state,place_geoid,action,decision_date,action_date,adopted_date,body,vote_for,vote_against,reason,reversed,reversal_date,source_type,source_url,verified,notes
+Austin,TX,,canceled,,,,,,,federal_immigration_access,,,aggregator,,FALSE,Canceled contract Immigration surveillance concerns
+Cambridge,MA,,canceled,,,,,,,federal_immigration_access,,,aggregator,,FALSE,Canceled Immigration enforcement concerns
+Dayton,OH,,suspended,,2026-06,,,,,federal_immigration_access,,,aggregator,,FALSE,"program suspended after 7,000 immigration searches found, cameras bagged in trash bags, June 2026 [1] "
+Denver,CO,,replaced_vendor,,,,,,,privacy,,,aggregator,,FALSE,"Replaced 111 cameras with Axon Community demand, privacy concerns"
+Edmonds,WA,,canceled,,2026-05,,,,,,,,aggregator,,FALSE,"the third city in Snohomish County to cancel, May 2026 [16] "
+Eugene,OR,,canceled,,,,,,,privacy,,,aggregator,,FALSE,Canceled Privacy and civil liberties
+Evanston,IL,,canceled,,,,,,,unauthorized_access,,,aggregator,,FALSE,contract terminated after state audit found CBP pilot program [8] 
+Flagstaff,AZ,,canceled,,,,,,,,,,aggregator,,FALSE,Deactivated ICE access fears
+Hillsborough,NC,,canceled,,,,,,,,,,aggregator,,FALSE,"terminated after finding contract language allowing Flock to share data with any government entity based on ""good faith belief"" of need [2] "
+Los Altos Hills,CA,,canceled,,2026-01,,,,,,,,aggregator,,FALSE,terminated in January 2026 after ICE concerns [15] 
+Mountain View,CA,,canceled,,2026-02,,,,,unauthorized_access,,,aggregator,,FALSE,"unanimous council vote, February 2026, after discovering 600,000 unauthorized searches [7] "
+Santa Cruz,CA,,canceled,,,,,,,,,,aggregator,,FALSE,Canceled Data shared with national network without city consent
+Woodburn,OR,,suspended,,,,,,,,,,aggregator,,FALSE,program suspended for 60 days over ICE concerns [15] 

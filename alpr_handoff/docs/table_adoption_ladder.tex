@@ -1,0 +1,55 @@
+
+% Table created by stargazer v.5.2.3 by Marek Hlavac, Social Policy Institute. E-mail: marek.hlavac at gmail.com
+% Date and time: Sun, Aug 09, 2026 - 10:54:07
+\begin{table}[!htbp] \centering 
+  \caption{Adoption margin: does a tract contain any ALPR camera?} 
+  \label{tab:adoption-ladder} 
+\footnotesize 
+\setlength{\tabcolsep}{3pt}\begin{tabular}{@{}lccccc@{}} 
+\\[-1.8ex]\hline 
+\hline \\[-1.8ex] 
+ & Demog. & +Expos. & +Land use & +State FE & +Mundlak \\ 
+\\[-1.8ex] & (1) & (2) & (3) & (4) & (5)\\ 
+\hline \\[-1.8ex] 
+ Log population &  & 0.429$^{***}$ & 0.525$^{***}$ & 0.651$^{***}$ & 0.694$^{***}$ \\ 
+  &  & (0.019) & (0.019) & (0.021) & (0.023) \\ 
+  Log land area &  & 0.128$^{***}$ & 0.144$^{***}$ & 0.058$^{***}$ & 0.136$^{***}$ \\ 
+  &  & (0.008) & (0.008) & (0.009) & (0.012) \\ 
+  Log density squared (centred) &  & $-$0.071$^{***}$ & $-$0.053$^{***}$ & $-$0.040$^{***}$ & $-$0.038$^{***}$ \\ 
+  &  & (0.002) & (0.002) & (0.002) & (0.002) \\ 
+  Log arterial km &  & 0.124$^{***}$ & 0.045$^{***}$ & 0.093$^{***}$ & 0.135$^{***}$ \\ 
+  &  & (0.009) & (0.009) & (0.010) & (0.011) \\ 
+  Has arterial road &  & 0.278$^{***}$ & 0.204$^{***}$ & 0.292$^{***}$ & 0.291$^{***}$ \\ 
+  &  & (0.023) & (0.023) & (0.024) & (0.026) \\ 
+  Employment ratio &  &  & 1.594$^{***}$ & 1.802$^{***}$ & 2.003$^{***}$ \\ 
+  &  &  & (0.040) & (0.042) & (0.047) \\ 
+  Retail job share &  &  & 1.175$^{***}$ & 1.109$^{***}$ & 1.265$^{***}$ \\ 
+  &  &  & (0.041) & (0.044) & (0.048) \\ 
+  Log median HH income & 0.024 & 0.169$^{***}$ & 0.116$^{***}$ & 0.171$^{***}$ & 0.029 \\ 
+  & (0.026) & (0.028) & (0.029) & (0.032) & (0.040) \\ 
+  Poverty rate & $-$0.843$^{***}$ & $-$0.291$^{**}$ & $-$0.349$^{***}$ & $-$0.233$^{*}$ & 0.101 \\ 
+  & (0.110) & (0.114) & (0.116) & (0.123) & (0.136) \\ 
+  Share Black & 0.445$^{***}$ & 0.698$^{***}$ & 0.989$^{***}$ & 0.730$^{***}$ & 0.495$^{***}$ \\ 
+  & (0.039) & (0.042) & (0.043) & (0.050) & (0.064) \\ 
+  Share Hispanic & 0.215$^{***}$ & 0.689$^{***}$ & 0.763$^{***}$ & $-$0.014 & 0.220$^{***}$ \\ 
+  & (0.035) & (0.039) & (0.040) & (0.052) & (0.069) \\ 
+  Share Asian & 0.359$^{***}$ & 1.238$^{***}$ & 1.215$^{***}$ & 0.893$^{***}$ & 0.803$^{***}$ \\ 
+  & (0.080) & (0.086) & (0.087) & (0.100) & (0.118) \\ 
+  Share renter-occupied & 0.023 & 0.951$^{***}$ & 0.161$^{***}$ & 0.124$^{**}$ & 0.233$^{***}$ \\ 
+  & (0.041) & (0.050) & (0.055) & (0.060) & (0.067) \\ 
+  Median age & $-$0.016$^{***}$ & $-$0.001 & $-$0.006$^{***}$ & $-$0.003$^{**}$ & $-$0.001 \\ 
+  & (0.001) & (0.001) & (0.001) & (0.001) & (0.001) \\ 
+ \hline \\[-1.8ex] 
+State FE & No & No & No & Yes & No \\ 
+County effects & No & No & No & No & Mundlak \\ 
+County means & No & No & No & No & Yes \\ 
+AIC & 113,655 & 108,486 & 106,163 & 98,664 & 92,426 \\ 
+Observations & 82,728 & 82,728 & 82,728 & 82,728 & 82,728 \\ 
+\hline 
+\hline \\[-1.8ex] 
+\end{tabular} 
+\vspace{0.6em}
+\begin{minipage}{\textwidth}\footnotesize
+\textit{Notes.} Logit coefficients, standard errors in parentheses. $^{*}$p$<$0.1; $^{**}$p$<$0.05; $^{***}$p$<$0.01. All columns use the same estimation sample. Column 5 is a county random intercept with the county mean of every covariate (Mundlak), which reproduces county fixed effects; its plain coefficients are within-county effects. County means and state dummies are estimated but not reported.
+\end{minipage}
+\end{table} 

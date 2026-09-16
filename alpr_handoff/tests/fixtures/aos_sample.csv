@@ -1,0 +1,4 @@
+AOSNUMBER,NEWAOSNUMBER (ORI9),City,County,State,Agency,Type of LEA,Summary,Type of Juris,Technology,TECH ABV,Vendor,Link 1,Link 1 Snapshot,Link 1 Source,Link 1 Type,Link 1 Date,Link 2,Link 2 Snapshot,Link 2 Source,Link 2 Type,Link 2 Date,Link 3,Link 3 Snapshot,Link 3 Source,Link 3 Type,Link 3 Date,Other Links
+AOS000056,FL0530000ALPR,Winter Haven,Polk County,FL,Polk County Sheriff's Office,Sheriff,Uses Flock Safety ALPRs as of July 2024.,County,Automated License Plate Readers,,Flock Safety,http://a,,Obs,,7/11/2024,http://b,,Obs,,5/1/2023,,,,,,
+AOS000057,BADVALUE,Raleigh,Wake County,NC,Raleigh PD,Municipal,Uses Vigilant ALPRs.,Municipal,Automated License Plate Readers,,Vigilant Solutions,http://c,,Obs,,3/2/2022,,,,,,,,,,,
+AOS000058,NC0920000DRON,Cary,Wake County,NC,Cary PD,Municipal,Uses drones.,Municipal,Drones,,DJI,http://d,,Obs,,1/1/2021,,,,,,,,,,,

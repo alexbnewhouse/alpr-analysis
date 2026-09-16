@@ -1,0 +1,8 @@
+{"attribution":{"url":"https://ohsome.org/copyrights"},"apiVersion":"1.10.4",
+ "groupByResult":[
+  {"groupByObject":"37183","result":[
+    {"timestamp":"2025-01-01T00:00:00Z","value":10.0},
+    {"timestamp":"2025-04-01T00:00:00Z","value":25.0}]},
+  {"groupByObject":"37119","result":[
+    {"timestamp":"2025-01-01T00:00:00Z","value":3.0},
+    {"timestamp":"2025-04-01T00:00:00Z","value":7.0}]}]}

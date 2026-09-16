@@ -1,0 +1,99 @@
+% Variable list for the tract-level hurdle model.
+% Requires: \usepackage{booktabs, array}
+%
+% NOTE: no \resizebox. The three columns are p{} so their text wraps; with
+% l-columns the long descriptions force a table thousands of points wide, and
+% wrapping that in \resizebox is what shrinks the type to be unreadable.
+
+\begin{table}[htbp]
+\centering\small
+\caption{Variables in the tract-level hurdle model}
+\label{tab:tract_variable_list}
+% Column 1 must clear \texttt{pct\_jobs\_retail\_food} (~110pt): typewriter
+% text with underscores cannot hyphenate, so a narrower column overflows.
+% \raggedright stops LaTeX stretching interword space to justify.
+\begin{tabular}{@{}
+  >{\raggedright\arraybackslash}p{0.235\textwidth}
+  >{\raggedright\arraybackslash}p{0.275\textwidth}
+  >{\raggedright\arraybackslash}p{0.43\textwidth}@{}}
+\toprule
+\textbf{Variable} & \textbf{Source} & \textbf{Description} \\
+\midrule
+
+\multicolumn{3}{@{}l}{\textit{Exposure and scale}} \\
+\texttt{log\_pop} &
+ACS 2023 5-year, B01003\_001E &
+Log total population. Used instead of log density, which is exactly log population minus log area. \\
+\texttt{log\_area} &
+TIGER/Line 2024 tract shapefile, \texttt{ALAND} (m$^2$, converted) &
+Log land area in km$^2$, water excluded. \\
+\texttt{log\_density\textsuperscript{2}} &
+Derived: ACS B01003\_001E $\div$ TIGER \texttt{ALAND}, centred then squared &
+Squared centred log density, capturing the inverted U: zero-camera tracts are commonest at both density extremes. Centring cuts its VIF from 22 to 1.8. \\
+\texttt{log\_road\_km} &
+TIGER/Line 2024 Primary \& Secondary Roads, MTFCC S1100 + S1200; computed by geometric intersection in EPSG:5070 &
+Log km of arterial roadway: limited-access highways plus US/state highways and major surface streets. Zero where none exists. \\
+\texttt{has\_arterial} &
+Derived from the above &
+Indicator for any arterial road: 20.9\% of tracts have none and cannot be logged. \\
+\addlinespace
+
+\multicolumn{3}{@{}l}{\textit{Land use}} \\
+\texttt{employment\_ratio} &
+LEHD LODES 8 (2022; 2021 for MI), WAC and RAC \texttt{C000} &
+Jobs $\div$ (jobs + resident workers). Bounded 0--1: 0 purely residential, 1 purely employment. \\
+\texttt{pct\_jobs\_retail\_food} &
+LEHD LODES 8, WAC sectors CNS07 + CNS18 &
+Share of local jobs in retail trade and accommodation/food services. \\
+\addlinespace
+
+\multicolumn{3}{@{}l}{\textit{Economic}} \\
+\texttt{log\_income} &
+ACS 2023 5-year, B19013\_001E &
+Log median household income, past 12 months, inflation-adjusted. \\
+\texttt{pct\_below\_poverty} &
+ACS B17001, 002E $\div$ 001E &
+Share below the federal poverty line, over the poverty universe rather than total population. \\
+\addlinespace
+
+\multicolumn{3}{@{}l}{\textit{Composition (White alone is the omitted reference)}} \\
+\texttt{pct\_black} &
+ACS B02001, 003E $\div$ 001E &
+Share reporting Black or African American alone. \\
+\texttt{pct\_hispanic} &
+ACS B03003 003E $\div$ B02001 001E &
+Share reporting Hispanic or Latino origin, of any race. \\
+\texttt{pct\_asian} &
+ACS B02001, 005E $\div$ 001E &
+Share reporting Asian alone. \\
+\addlinespace
+
+\multicolumn{3}{@{}l}{\textit{Other}} \\
+\texttt{pct\_renter\_occupied} &
+ACS B25003, 003E $\div$ 001E &
+Share of occupied housing units that are renter-occupied. \\
+\texttt{median\_age} &
+ACS B01002\_001E &
+Median age of the tract population, in years. \\
+\bottomrule
+\end{tabular}
+
+\vspace{0.6em}
+\begin{minipage}{\textwidth}\footnotesize
+\textit{Notes.} All ACS quantities are 2023 5-year estimates from the Census
+API; jam values ($-666666666$ and similar) are recoded to missing rather than
+left as large negatives. TIGER quantities are the 2024 vintage. LODES is the
+2022 release, except Michigan, which has no 2022 file and uses 2021; Alaska
+does not participate in LEHD and is excluded from the land-use measures.
+
+Each ACS share is computed over its own universe rather than over total
+population. Race shares are compositional and sum to approximately one, so
+\texttt{pct\_white} is omitted as the reference category. Owner-occupied share
+is the exact complement of renter share and is never entered jointly.
+
+Four variables are taken directly from a provider (\texttt{log\_pop},
+\texttt{log\_income}, \texttt{median\_age} before transformation, and
+\texttt{log\_area}); the remaining ten we construct, either as a ratio over the
+correct ACS universe or as a geometric computation.
+\end{minipage}
+\end{table}
