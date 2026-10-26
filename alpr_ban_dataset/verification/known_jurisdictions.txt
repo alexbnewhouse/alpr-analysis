@@ -1,0 +1,179 @@
+Appleton, WI | canceled | 2026-05
+Asheville, NC | canceled | 2026-08
+Ashland, WI | declined_to_adopt | 2026-06
+Atlanta, GA | canceled | 2025-10
+Austin, TX | declined_to_adopt | 2025-06
+Bandera, TX | canceled | 2026-05
+Bay City, MI | declined_to_adopt | 2025-11
+Bay, AR | canceled | 
+Bend, OR | canceled | 2025-01
+Berkeley, CA | suspended | 2025-08
+Bernalillo County, NM, NM | canceled | 2026-08
+Bethel, CT | suspended | 2026-08
+Binghamton, NY | canceled | 2026-08
+Bishop, CA | canceled | 2026-06
+Bloomington, IN | canceled | 2026-04
+Bolivar, MO | canceled | 2026-08
+Brentwood, CA | canceled | 
+Bridgewater, VA | canceled | 
+Brooklyn Park, MN | canceled | 2025-12
+Cambridge, MA | canceled | 2025-12
+Carrier, OK | canceled | 2026-08
+Cave Creek, AZ | canceled | 2026-08
+Centerton, AR | canceled | 
+Chandler, AZ | canceled | 
+Charlottesville, VA | declined_to_adopt | 2025-12
+Christiansburg, VA | canceled | 
+Cincinnati, OH | canceled | 
+Clearwater County, ID, ID | canceled | 2026-07
+Columbia Heights, MN | canceled | 2026-06
+Columbia, MO | ordinance_ban | 2024-11
+Coshocton, OH | canceled | 2026-08
+Coweta, OK | canceled | 2026-08
+Cudahy, WI | canceled | 2026-08
+Dane County, WI, WI | canceled | 2026-04
+Davidson County, NC, NC | canceled | 2026-08
+Deer Park, TX | suspended | 
+Denver, CO | declined_to_adopt | 2025-05
+Duluth, MN | declined_to_adopt | 2026-08
+Dutchtown, MO | canceled | 2026-03
+El Cerrito, CA | canceled | 
+Elbert County, CO, CO | declined_to_adopt | 2024-12
+Elkton, VA | canceled | 2026-07
+Eugene, OR | canceled | 2025-12
+Eureka, CA | declined_to_adopt | 2025-02
+Evanston, IL | canceled | 2025-08
+Everett, WA | canceled | 2023-02
+Farmington, NM | not_renewed | 
+Fitchburg, WI | canceled | 2026-05
+Flagstaff, AZ | canceled | 2025-12
+Floyd County, VA, VA | canceled | 2026-07
+Force, PA | canceled | 2025-03
+Fort Collins, CO | canceled | 
+Fort Mitchell, KY | canceled | 2026-08
+Fort Wayne, IN | declined_to_adopt | 2026-08
+Framingham, MA | declined_to_adopt | 2026-06
+Franklin County, PA, PA | declined_to_adopt | 2026-08
+Galva, IL | canceled | 2026-08
+Garden City, ID | declined_to_adopt | 2026-08
+Gig Harbor, WA | declined_to_adopt | 2025-03
+Giles County, VA, VA | canceled | 2026-08
+Grants, NM | canceled | 2026-08
+Grass Valley, CA | suspended | 
+Green River, WY | declined_to_adopt | 2026-07
+Green, OH | canceled | 2026-03
+Greenville, NC | declined_to_adopt | 2026-08
+Greers Ferry, AR | canceled | 
+Guadalupe County, TX, TX | canceled | 2026-08
+Harrisonburg, VA | canceled | 2026-07
+Hays County, TX, TX | canceled | 2025-10
+Henry County, VA, VA | canceled | 2026-08
+Henry, IL | suspended | 
+Hillsborough, NC | canceled | 2025-10
+Hood County, TX, TX | canceled | 2023-10
+Hopkinton, MA | canceled | 
+Hunter, OH | declined_to_adopt | 2023-12
+Indianola, IA | canceled | 2026-08
+Iowa, LA | suspended | 
+Ithaca, NY | canceled | 2026-03
+Josephine County, OR, OR | canceled | 2026-08
+Kaukauna, WI | declined_to_adopt | 2026-07
+Kent, OH | declined_to_adopt | 2025-11
+Knoxville, TN | canceled | 2026-02
+Lake County, FL, FL | canceled | 2021-08
+Lamont, CA | suspended | 2026-08
+Lane County, OR, OR | canceled | 2025-12
+Lansing, MI | canceled | 2026-08
+Lincoln County, ID, ID | canceled | 2026-08
+Lockhart, TX | declined_to_adopt | 2025-10
+Los Altos Hills, CA | canceled | 2026-01
+Los Angeles, CA | canceled | 2026-07
+Louisville, CO | canceled | 2025-08
+Lynnwood, WA | canceled | 2025-11
+Macon County, NC, NC | canceled | 2026-07
+Madison, WI | canceled | 2026-07
+Manchester, CT | suspended | 2026-08
+Mayflower, AR | canceled | 2026-08
+McFarland, WI | declined_to_adopt | 2026-05
+Menominee, MI | declined_to_adopt | 2026-05
+Milford, MA | suspended | 
+Monona, WI | declined_to_adopt | 2026-05
+Monroe County, IN, IN | canceled | 2026-07
+Mount Vernon, WA | canceled | 2026-07
+Mountlake Terrace, WA | canceled | 2025-12
+New Bedford, MA | declined_to_adopt | 
+New Orleans, LA | declined_to_adopt | 2022-05
+Newport, KY | declined_to_adopt | 2026-07
+Oak Park, IL | canceled | 2025-08
+Oceana County, MI, MI | declined_to_adopt | 2026-08
+Olympia, WA | canceled | 2025-12
+Ord, NE | canceled | 2026-08
+Oshkosh, WI | canceled | 2026-04
+Oxnard, CA | canceled | 2026-02
+Pasadena, TX | canceled | 
+Pasco County, FL, FL | canceled | 2026-08
+Pea Ridge, AR | canceled | 
+Pflugerville, TX | canceled | 2026-08
+Pinal County, AZ, AZ | canceled | 2026-08
+Pittsboro, NC | canceled | 2026-05
+Prosser, WA | canceled | 2026-01
+Pulaski County, MO, MO | declined_to_adopt | 2026-08
+Redmond, WA | canceled | 2025-11
+Renton, WA | suspended | 2026-04
+Richmond, CA | canceled | 2025-12
+Rio, FL | suspended | 2026-05
+Salem, IL | declined_to_adopt | 2026-04
+Salem, MA | declined_to_adopt | 2026-07
+Salida, CA | canceled | 
+Salida, CO | canceled | 2026-08
+San Diego, CA | canceled | 
+San Francisco, CA | suspended | 
+San Marcos, TX | canceled | 2025-12
+Santa Barbara, CA | canceled | 
+Santa Clara County, CA, CA | canceled | 2026-02
+Santa Cruz, CA | canceled | 2026-01
+Saranac Lake, NY | canceled | 2026-03
+Scarsdale, NY | canceled | 2025-08
+Sedona, AZ | canceled | 2025-09
+Sedro-Woolley, WA | canceled | 2025-10
+Seneca, MO | canceled | 2025-02
+Sheboygan, WI | canceled | 2026-08
+Sherburne County, MN, MN | declined_to_adopt | 2026-08
+Shoreline, WA | declined_to_adopt | 2026-05
+Shoshone, ID | canceled | 2026-08
+Skamania County, WA, WA | canceled | 2025-11
+South Portland, ME | canceled | 2026-06
+South Tucson, AZ | canceled | 2023-02
+Springfield, OR | canceled | 2025-12
+St. Charles, MO | canceled | 2026-08
+St. Paul, MN | canceled | 2026-08
+Stanwood, WA | canceled | 2025-09
+Staunton, VA | canceled | 2025-12
+Steamboat Springs, CO | canceled | 2026-08
+Stoughton, WI | canceled | 2026-07
+Sturgeon Bay, WI | canceled | 2023-04
+Sullivan County, TN, TN | canceled | 2026-08
+Surprise, AZ | canceled | 2026-08
+Syracuse, NY | canceled | 2026-07
+Taos, NM | canceled | 2026-07
+Tempe, AZ | suspended | 
+Tompkins County, NY, NY | canceled | 2026-04
+Valley, AL | canceled | 
+Verona, WI | declined_to_adopt | 2025-11
+Virginia, MN | suspended | 
+Walla Walla, WA | canceled | 2026-01
+Warrenton, VA | declined_to_adopt | 2025-10
+Watertown, MA | canceled | 2026-01
+Waukee, IA | not_renewed | 
+Wellsville, KS | canceled | 2026-08
+West Salem, WI | canceled | 2026-08
+West St. Paul, MN | suspended | 
+Westland, MI | canceled | 2026-07
+Weston, MO | canceled | 2026-04
+Wilmington, DE | canceled | 
+Winona, MN | canceled | 2026-08
+Winston, OR | canceled | 2026-08
+Woodburn, OR | canceled | 
+Wyandot County, OH, OH | canceled | 2026-08
+Wylie, TX | suspended | 
+Ypsilanti, MI | ordinance_ban | 2022-09

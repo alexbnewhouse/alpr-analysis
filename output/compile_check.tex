@@ -1,0 +1,18 @@
+% Compile check for the generated bans tables/figure, using the draft's
+% table-relevant preamble (main.tex lines 1-35). Not part of the manuscript.
+%   cd output && pdflatex -interaction=nonstopmode compile_check.tex | grep -c Overfull
+\documentclass{article}
+\usepackage{graphicx,amsmath,booktabs,threeparttable,pdflscape,afterpage,float}
+\usepackage[dvipsnames]{xcolor}
+\usepackage[labelfont=bf,font=small]{caption}
+\usepackage[margin=1in]{geometry}
+\usepackage[format=plain,justification=centering]{caption}
+\usepackage{hyperref}
+\begin{document}
+\section*{Banning of Flock Cameras: tables and figure}
+\label{tab:descriptives}
+\input{tables/tab_ban_counts.tex}
+\input{figs/fig_ban_timeline.tex}
+\input{tables/tab_ban_descriptives.tex}
+\input{tables/tab_ban_models.tex}
+\end{document}

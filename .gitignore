@@ -18,3 +18,9 @@ alpr_handoff/**/*.rds
 alpr_ban_dataset/sources/nexis/*.DOCX
 alpr_ban_dataset/sources/nexis/*.docx
 .pytest_cache/
+
+# LaTeX build files from output/compile_check.tex
+output/*.aux
+output/*.log
+output/*.out
+output/compile_check.pdf
