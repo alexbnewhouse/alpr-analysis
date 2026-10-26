@@ -34,6 +34,9 @@ the pipeline README cites file paths in them.
 | `alpr_pipeline` (`fetch`, `covariates`) | OSM via DeFlock derived feed + full Overpass harvest; ACS 2023; VEST 2020; AIP; Kaplan UCR 2023 | `alpr_cameras_us.parquet` (124,623 cameras), `alpr_us_full.sqlite` (Overpass, 20k editors), `tract_panel.parquet` (85,381 tracts, 62 cols) | ✅ 2026-08-04 snapshot; tests pass on macOS 2026-09-13 |
 | `scripts/01_cog2022_police.R` | 2022 Census of Governments, Finance individual-unit file | `place_police_2022.csv`, `cousub_police_2022.csv`, `county_sheriff_2022.csv`, `cog2022_coverage.md` | ✅ 2026-09-13 |
 | `scripts/02_pipeline_manifest.py` | the pipeline's data directory | `alpr_pipeline/DATA_MANIFEST.md` | ✅ 2026-09-13 |
+| `scripts/03_place_politics_governance.py` | VEST 2020 block-group returns, 2023 place boundaries, AIP, CoG 2022 | `place_politics_governance.csv` (Trump 2020, incorporated, own PD, own police $ p.c.) | ✅ 2026-10-26 |
+| `scripts/04_build_bans_register.py` | `alpr_ban_dataset/verification/` (source-verification pass + gap search) | `alpr_ban_dataset/register/alpr_decisions_verified.csv`, `data/bans/*.csv`, `data/bans/build_report.md` | ✅ 2026-10-26 (660 decisions to Sept 30; 3 verification rounds) |
+| `scripts/05_bans_analysis.R` | the three above + Stone's place frame | `output/tables/tab_ban_{counts,descriptives,models,models_robust}.tex`, `output/figs/fig_ban_timeline.{pdf,tex}` | ✅ 2026-10-26 — see `notes/bans-analysis.md` |
 
 Run from the project root: `Rscript scripts/01_cog2022_police.R` (≈1 s after the 10 MB download). Needs R with readr, dplyr, tidyr, stringr; testthat for the tests.
 

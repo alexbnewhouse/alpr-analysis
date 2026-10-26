@@ -1,0 +1,80 @@
+level,geo_type,geoid,corrected_city,corrected_state,decision_date,action,state_triggered,reason,confidence,evidence_url
+county,county,12109,St. Johns County,FL,2026-10-20,canceled,0,privacy,high,https://www.news4jax.com/news/politics/2026/10/20/in-split-vote-st-johns-county-commissioners-revoke-permits-for-all-license-plate-readers-on-county-roads/
+county,county,12127,Volusia County,FL,2026-10-06,suspended,0,privacy,high,https://www.wftv.com/news/local/volusia-county/volusia-county-council-approves-one-year-moratorium-license-plate-reader-cameras/NEY62RTEORBLXNO3UQJMYUEIQM/
+county,county,17089,Kane County,IL,2026-10-06,canceled,0,privacy,medium,https://www.cbsnews.com/chicago/news/kane-county-sheriff-removes-flock-cameras-mill-creek-subdivision-geneva/
+county,county,18099,Marshall County,IN,2026-10-12,canceled,0,cost,medium,https://www.giant.fm/fulton-county/news/local-news/county-council-passes-resolution-to-defund-flock-cameras/
+county,county,29055,Crawford County,MO,2026-10-08,canceled,0,other,medium,"https://www.threeriverspublishing.com/stories/untitled,298971"
+county,county,29125,Maries County,MO,2026-10-19,canceled,0,other,high,https://abc17news.com/news/maries/2026/10/19/maries-county-ends-flock-contract-after-company-rep-no-shows-for-public-meeting/
+county,county,37133,Onslow County,NC,2026-10,not_renewed,0,efficacy,high,https://wcti12.com/news/local/onslow-sheriff-says-stationary-license-plate-reader-cameras-will-be-removed
+county,county,37159,Rowan County,NC,2026-10-19,not_renewed,0,privacy,high,https://www.salisburypost.com/2026/10/20/roco-cuts-flock-contract/
+county,county,36027,Dutchess County,NY,2026-10-13,suspended,0,privacy,medium,https://highlandscurrent.org/2026/10/16/dutchess-votes-to-cover-flock-cameras/
+county,county,36111,Ulster County,NY,2026-10-22,ordinance_ban,0,privacy,high,https://www.ulstercountyny.gov/Government/News/Newsroom/2026/10/County-Executive-Metzger-Issues-Executive-Order-Prohibiting-Use-of-Flock-and-AI%E2%80%91Assisted-Surveillance-Tools
+county,county,39061,Hamilton County,OH,2026-10-02,canceled,0,privacy,high,https://www.fox19.com/2026/10/02/hamilton-county-sheriffs-office-ends-flock-camera-use/
+county,county,45007,Anderson County,SC,2026-10-06,not_renewed,0,privacy,medium,https://www.andersonobserver.com/news/county-moves-ahead-on-jettisoning-flock-cameras-though-few-in-operation
+county,county,48201,Harris County,TX,2026-10-08,canceled,0,privacy,medium,https://www.click2houston.com/news/local/2026/10/08/61-flock-cameras-taken-offline-in-harris-county-precinct-4-amid-privacy-concerns/
+county,county,51007,Amelia County,VA,2026-10-15,canceled,0,privacy,high,https://www.12onyourside.com/2026/10/15/amelia-sheriffs-office-ditches-flock-effective-immediately/
+county,county,51087,Henrico County,VA,2026-10-06,canceled,0,privacy,high,https://www.vpm.org/news/2026-10-06/henrico-police-cancel-flock-safety-alpr-vithoulkas-cooper-newby/
+county,county,51121,Montgomery County,VA,2026-10-01,canceled,0,privacy,high,https://www.wsls.com/news/local/2026/10/02/montgomery-county-sheriffs-office-discontinuing-use-of-flock-cameras/
+county,county,51125,Nelson County,VA,2026-10-13,canceled,0,privacy,high,https://www.wsls.com/news/local/2026/10/14/nelson-county-sheriffs-office-to-discontinue-use-of-flock-camera-usage-effective-immediately/
+county,county,55037,Florence County,WI,2026-10-20,canceled,0,,high,https://www.uppermichiganssource.com/2026/10/21/florence-county-board-approves-data-center-moratorium-ends-flock-camera-use/
+county,county,55079,Milwaukee County,WI,2026-10-01,canceled,0,privacy,high,https://urbanmilwaukee.com/2026/10/03/mke-county-supervisors-pass-flock-ban/
+place,place,0523290,Fayetteville,AR,2026-10-06,ordinance_ban,0,,high,https://katv.com/news/local/fayetteville-city-council-unanimously-passes-ordinance-banning-flock-cameras
+place,place,0561670,Russellville,AR,2026-10,not_renewed,0,other,medium,https://www.kvom.com/russellville-to-end-contract-with-flock/
+place,place,0564370,Siloam Springs,AR,2026-10-20,suspended,0,privacy,high,https://www.4029tv.com/article/siloam-springs-turns-off-flock-safety-cameras-while-board-reviews-contract/74198618
+place,place,0465000,Scottsdale,AZ,2026-10-06,not_renewed,0,privacy,medium,https://ktar.com/?p=5916596
+place,place,0473000,Tempe,AZ,2026-10-15,ordinance_ban,0,privacy,high,https://ktar.com/arizona-news/tempe-becomes-1st-arizona-city-to-enact-strict-ban-on-automated-license-plate-re
+place,place,0628000,Fullerton,CA,2026-10-06,suspended,0,privacy,high,https://fullertonobserver.com/2026/10/07/fullerton-council-votes-3-1-to-switch-off-flock-license-plate-cameras-for-six-months/
+place,place,0644000,Los Angeles,CA,2026-10-06,declined_to_adopt,0,privacy,medium,https://www.police1.com/lapd/city-council-pauses-lapds-license-plate-reader-pilot-program
+place,place,0803455,Arvada,CO,2026-10-19,not_renewed,0,privacy,high,https://www.arvadapress.com/news/local-government/article_b0dade22-0149-47c9-91ca-154d01289b1b.html
+place,place,0804000,Aurora,CO,2026-10-03,canceled,0,other,medium,https://www.cbsnews.com/colorado/news/flock-cameras-aurora-schools-turned-off-scheduled-removal/
+place,place,0804110,Avon,CO,2026-10,canceled,0,privacy,high,https://www.vaildaily.com/news/avon-narrowly-puts-privacy-over-public-safety-by-voting-4-3-to-terminate-flock-camera-contract/
+place,place,0808400,Breckenridge,CO,2026-10-13,replaced_vendor,0,privacy,high,https://www.summitdaily.com/news/breckenridge-to-switch-license-plate-reader-tech-from-flock-to-axon-as-soon-as-possible-amid-public-controversy/
+place,place,0841835,Lafayette,CO,2026-10-20,canceled,0,privacy,high,https://www.yahoo.com/news/articles/lafayette-city-council-unanimously-votes-014038927.html
+place,place,0876795,Telluride,CO,2026-10,not_renewed,0,,medium,https://www.kvnf.org/kvnf-stories/2026-10-14/telluride-cancels-contract-with-flock-safety
+place,place,0947515,Milford,CT,2026-10-05,suspended,0,privacy,medium,https://www.nbcconnecticut.com/news/local/milford-considers-pausing-more-flock-cameras-amid-surveillance-concerns-data-breach/3781857/
+place,cousub,0911071390,South Windsor,CT,2026-10-05,canceled,0,,high,https://www.ctinsider.com/journalinquirer/article/south-windsor-deactivates-flock-cameras-22468088.php
+place,place,1207875,Boynton Beach,FL,2026-10-20,not_renewed,0,privacy,high,https://cbs12.com/news/local/boynton-beach-moves-toward-ending-flock-camera-agreements-considers-reducing-surveillance
+place,place,1612250,Caldwell,ID,2026-10,replaced_vendor,0,privacy,medium,https://idahofreedom.org/caldwell-plans-to-end-its-contract-with-flock-but-theres-a-catch/
+place,place,1750010,Monmouth,IL,2026-10-05,not_renewed,0,cost,high,https://www.tspr.org/tspr-local-news/2026-10-05/monmouth-police-wont-renew-flock-safety-contract
+place,place,1760352,Plano,IL,2026-10-12,canceled,0,privacy,high,https://www.wcsjnews.com/news/local/plano-votes-to-end-flock-safety-contract-early-cameras-to-be-turned-off/article_f3b2c664-4716-53e5-a445-aac9ff7d3fd7.html
+place,place,1764421,Riverside,IL,2026-10-15,not_renewed,0,unauthorized_access,high,https://www.rblandmark.com/2026/10/16/riverside-renew-flock-contract/
+place,place,1805860,Bloomington,IN,2026-10-14,ordinance_ban,0,privacy,high,https://bsquarebulletin.com/bloomington-council-votes-7-0-to-ban-license-plate-readers-after-debate-over-some-exceptions/
+place,place,1848798,Michigan City,IN,2026-10-06,declined_to_adopt,0,privacy,medium,https://wsbt.com/news/local/protestors-speak-out-against-flock-cameras-in-michigan-city-hall-proposal-fund-police-limited-use-protest-residents-public-comment-reading-ordinance-meeting-systems-input-michigan-city-indiana
+place,place,2021675,Eudora,KS,2026-10-09,declined_to_adopt,0,privacy,medium,https://www.kshb.com/news/local-news/kansas/douglas-county/eudora-police-department-seeks-license-plate-reader-chief-says-flock-eliminated
+place,place,2128900,Frankfort,KY,2026-10-12,not_renewed,0,unauthorized_access,high,https://spectrumnews1.com/ky/louisville/news/2026/10/13/frankfort-flock-cameras
+place,place,2130700,Georgetown,KY,2026-10-12,suspended,0,privacy,high,https://www.news-graphic.com/news/city-suspends-use-of-flock-cameras/article_cc1e6384-5465-4048-8583-3dec00be76b1.html
+place,place,2171976,Southgate,KY,2026-10-21,suspended,0,privacy,high,https://linknky.com/news/2026/10/22/southgate-votes-3-2-to-cover-its-flock-cameras/
+place,place,2541725,Milton,MA,2026-10-06,canceled,0,privacy,medium,https://app.govly.com/public/meetings/99422
+place,place,2545000,New Bedford,MA,2026-10-08,not_renewed,0,,high,https://newbedfordlight.org/city-wont-renew-flock-contract/
+place,place,2555745,Quincy,MA,2026-10-24,replaced_vendor,0,privacy,high,https://www.boston.com/news/local-news/2026/10/25/quincy-to-stop-using-flock-cameras-switches-to-different-license-plate-reader-system/
+place,cousub,2502357600,Rochester,MA,2026-10-05,suspended,0,privacy,high,https://wbsm.com/rochester-flock-license-plate-cameras-paused/
+place,place,2650560,Madison Heights,MI,2026-10-11,not_renewed,0,privacy,medium,https://spectrumlocalnews.com/michigan/news/2026/10/12/flock-cameras-madison-heights
+place,place,2653760,Middleville,MI,2026-10-13,suspended,0,privacy,medium,https://hastingsbanner.com/articles/news/middleville-hits-pause-on-flock-camera-contract/
+place,place,2653960,Milford,MI,2026-10-05,not_renewed,0,efficacy,high,https://www.clickondetroit.com/news/local/2026/10/06/milford-village-council-votes-7-0-to-remove-flock-safety-license-plate-cameras-after-resident-concerns/
+place,place,2923086,Excelsior Springs,MO,2026-10-19,canceled,0,cost,high,https://www.kshb.com/news/local-news/excelsior-springs-city-council-votes-unanimously-to-end-the-citys-contract-with-flock-safety
+place,place,2836000,Jackson,MS,2026-10-14,not_renewed,0,unauthorized_access,high,https://www.wapt.com/article/jackson-police-chief-plans-to-end-contract-with-flock-safety/74139191
+place,place,3702460,Atkinson,NC,2026-10-01,ordinance_ban,0,privacy,high,https://portcitydaily.com/latest-news/2026/10/05/pender-town-becomes-first-in-the-state-to-ban-alpr-surveillance-cameras/
+place,place,3260600,Reno,NV,2026-10-08,not_renewed,0,privacy,high,https://thenevadaindependent.com/article/reno-is-latest-city-in-nevada-to-end-contract-with-flock-safety
+place,place,3630576,Greenport,NY,2026-10-07,not_renewed,0,efficacy,medium,https://www.dailygazette.com/hv360/greenport-police-will-not-renew-flock-camera-contract/article_f2c453ab-cef3-4cfa-ac9e-1fe946df0e6d.html
+place,place,3659641,Poughkeepsie,NY,2026-10-20,canceled,0,federal_immigration_access,medium,https://midhudsonnews.com/2026/10/22/flock-cameras-not-flying-away-from-city/
+place,place,3678355,Warwick,NY,2026-10-08,not_renewed,0,privacy,high,https://www.warwickadvertiser.com/news/local-news/warwick-ends-contract-with-flock-safety-XA6277642
+place,place,3902736,Athens,OH,2026-10-05,not_renewed,0,privacy,high,https://woub.org/2026/10/08/athens-police-to-drop-use-of-flock-cameras/
+place,place,3978470,Union Township (Clermont County),OH,2026-10-13,canceled,0,,medium,https://local12.com/news/local/2-communities-vote-flock-cameras-cincinnati-union-township-clermont-county-lebanon-contract-bagged-covered-contracts-surveillance
+place,cousub,4400720080,Cumberland,RI,2026-10-07,not_renewed,0,,high,https://upriseri.com/article/recap-cumberland-council-votes-to-end-flock-rejects-brailey-parking-rule/
+place,place,4823164,El Lago,TX,2026-10,not_renewed,0,privacy,medium,https://www.yahoo.com/news/politics/articles/el-lago-council-decides-against-015200992.html
+place,place,4824000,El Paso,TX,2026-10,ordinance_ban,0,privacy,medium,https://www.thecooldown.com/green-tech/el-paso-future-flock-camera-restrictions/
+place,place,4823044,Elgin,TX,2026-10-13,canceled,0,privacy,high,"https://www.elgincourier.com/article/4983,elgin-cuts-ties-with-flock-safety"
+place,place,4833428,Hewitt,TX,2026-10-01,canceled,1,cost,high,https://www.kwtx.com/2026/10/02/flock-safety-rollout-mandatory-audits-lockout-system-alpr-cameras-spark-debate-across-central-texas/
+place,place,4839952,Kyle,TX,2026-10-05,suspended,0,other,high,https://communityimpact.com/san-marcos-buda-kyle/government/kyle-to-suspend-use-of-flock-cameras/
+place,place,4848072,Midland,TX,2026-10-13,canceled,1,privacy,high,https://fox7austin.com/news/midland-becomes-latest-texas-city-end-flock-contract-amid-backlash
+place,place,4867496,Sherman,TX,2026-10-19,canceled,0,privacy,high,https://www.kxii.com/2026/10/19/sherman-city-council-votes-get-rid-flock-cameras/
+place,place,4940470,Kearns,UT,2026-10,suspended,0,other,medium,https://www.fox13now.com/good-day-utah/unified-police-removes-kearns-license-plate-readers-after-public-backlash
+place,place,5121184,Damascus,VA,2026-10-07,not_renewed,0,,high,https://wcyb.com/news/local/damascus-votes-to-not-renew-towns-contract-with-flock
+place,place,5167000,Richmond,VA,2026-10-10,not_renewed,0,efficacy,high,https://www.vpm.org/news/2026-10-10/rva-danny-avula-flock-safety-contract-alpr-cameras/
+place,place,5042700,Manchester,VT,2026-10-20,not_renewed,1,other,medium,https://www.manchesterjournal.com/local-news/manchester-weighs-flock-camera-alternatives-ahead-of-vermont-alpr-ban/5041136
+place,place,5511950,Caledonia,WI,2026-10-06,canceled,0,,high,https://spectrumnews1.com/wi/green-bay/news/2026/10/07/caledonia-flock-cameras-racine-county
+place,place,5519450,Delavan,WI,2026-10-20,canceled,0,privacy,medium,https://www.tmj4.com/news/local-news/in-your-community/walworth-county/delavan-residents-celebrate-after-city-votes-to-immediately-remove-flock-cameras
+place,place,5539300,Kewaskum,WI,2026-10,not_renewed,0,other,medium,https://www.tmj4.com/news/local-news/in-your-community/washington-county/kewaskum-police-wont-renew-flock-safety-contract-after-license-plate-camera-is-stolen-amid-public-pushback
+place,place,5540775,La Crosse,WI,2026-10-23,canceled,0,unauthorized_access,high,https://www.news8000.com/news/local-news/la-crosse/la-crosse-police-ending-flock-safety-camera-contract/article_522640ae-9ed7-427f-94f1-0afb7ca65cc3.html
+place,place,5568275,River Falls,WI,2026-10-14,canceled,0,,medium,"https://www.piercecountyjournal.news/stories/river-falls-police-department-completes-flock-safety-camera-system-evaluation,209535"
+place,place,5471212,St. Albans,WV,2026-10-19,ordinance_ban,0,privacy,high,https://appalachiatoday.com/st-albans-flock-camera-resolution/
