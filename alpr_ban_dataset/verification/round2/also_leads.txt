@@ -1,0 +1,33 @@
+G2_008 (Washington County, AR): ALSO: Lowell AR council considering similar proposal (no decision as of 2026-10-06).
+G3_061 (Franklin County, FL): ALSO: Walton, Okaloosa, Liberty, Calhoun, Wakulla, Jefferson counties FL (sheriffs, ~2026-08-31).
+G3_057 (Putnam County, FL): ALSO: Liberty County, FL (sheriff, similar announcement, 2026-08-31).
+G3_068 (Volusia County, FL): ALSO (same WFTV page): Seminole County Sheriff, FL and Sanford, FL police suspended Flock (~2026-08-31/09-01).
+P080 (St. Charles County, MO): ALSO (unverified, from KCUR search snippet): Pulaski County, MO (sheriff stopped using Flock, 2026-08)
+C006 (Skamania County, WA): ALSO: Woodburn, OR (cameras turned off, immigration concerns, date n/a).
+C007 (Dane County, WI): ALSO: Verona, WI (not renewed late 2025) = row P149.
+G1_007 (Winnebago County, WI): ALSO: UW Oshkosh PD suspended (university, not coded).
+G3_141 (Worthington City Schools, OH): ALSO: Olentangy Local Schools (separate row).
+P003 (Centerton, AR): ALSO: Pea Ridge, AR (canceled, 2026-07-24); Cabot, AR and Mayflower, AR (dropped, 2026-08).
+P005 (Mayflower, AR): ALSO: Cabot, AR (mayor temporarily suspended, early Aug 2026).
+P113 (Pasadena, CA): ALSO: South Pasadena, CA (not_renewed, date not verified).
+P030 (Denver, CO): ALSO: Denver, CO council approved Axon contract replacing Flock (replaced_vendor, ~2026-04).
+G3_184 (Killingworth, CT): ALSO: Windsor, CT (terminated Flock contract, undated).
+P054 (, IA): ALSO: Indianola, IA (suspended, 2026-08-17, police; KCRG); Waukee, IA (suspended/not renewing, 2026-08); Dallas County, IA (suspended, 2026-08); Coralville, IA (canceled by council, 2026-02). Check these against other rows.
+G1_070 (Osceola, IA): ALSO: Clarke County, IA same claim. Not independently verified.
+P045 (Galva, IL): ALSO: Henry County, IL Sheriff discontinued Flock (~2026-08, not verified separately).
+P095 (Independence, KY): ALSO: Fort Mitchell, KY (ended Flock program, date not given); Oxford, OH (ended Flock program, date not given)
+G3_156 (Dartmouth, MA): ALSO: Acushnet, MA (suspended pending termination review, Board of Selectmen unanimous, 2026-09-02).
+G3_171 (Southbridge, MA): ALSO: Easton, MA (police to end Flock contract at end of year, announced ~Aug 29-30, 2026).
+G1_044 (Sumpter Township, MI): ALSO named: Clawson, Ferndale, Milford (rows below), Westland/Oceana/Menominee (already in register), Dickinson County.
+P071 (Duluth, MN): ALSO: St. Louis County, MN sheriff ended Flock pilot (2026-08, per northernnewsnow/KAXE).
+G1_067 (Royalton, MN): ALSO: says Morrison County and Little Falls "had already moved away from the Flock system" (no details found; not coded).
+G3_122 (Hartland, NY): ALSO: North Tonawanda, NY (ordered removal, Aug 2026, not verified).
+P103 (Eugene, OR): ALSO: Springfield, OR (canceled: removing 25 Flock cameras, police dept, 2025-12-05)
+P104 (Springfield, OR): ALSO: Eugene, OR (canceled by police/city manager, 2025-12-05; council pause 2025-10-08).
+P114 (Pflugerville, TX): ALSO: Pflugerville ISD (other) discontinued Flock 2026-08-26.
+P100 (Harrisonburg, VA): ALSO (unverified, WVTF snippet): Elkton, VA (eliminated Flock, 2026)
+P137 (Appleton, WI): ALSO: Oshkosh, WI (not renewed, Apr 2026) = row P145.
+P141 (Kaukauna, WI): ALSO: Grand Chute, WI (not renewed, date n/a).
+P143 (McFarland, WI): ALSO: Monona (May 4) = P144; Dane County (Apr 16) = C007. Nexis headline (Brazilian outlet) irrelevant.
+G1_018 (Oconomowoc, WI): ALSO: Oconomowoc Area School District to stop using its 4 cameras (school district, not coded).
+G1_027 (Waunakee, WI): ALSO mentions Sun Prairie not renewing (separate row).

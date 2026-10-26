@@ -11,6 +11,7 @@
 #   output/tables/tab_ban_counts.tex        decisions by action, level, reason, period, state
 #   output/tables/tab_ban_descriptives.tex  places that acted vs adopters that did not vs all places
 #   output/tables/tab_ban_models.tex        Firth logits: any restriction / ban / pause, + state-FE check
+#   output/tables/tab_ban_models_robust.tex local-only, whole-program, high-confidence, Flock-only, adopters-only
 #   output/tables/ban_model_ame.csv         1-SD average marginal effects behind the text
 #   output/figs/fig_ban_timeline.pdf        monthly decisions, Jan 2025 - Sep 2026
 #
@@ -36,9 +37,9 @@ polgov <- read_csv("data/out/place_politics_governance.csv",
 p <- read_parquet("alpr_handoff/external/data/model_frame_place.parquet") %>%
   filter(population > 0, !is.na(median_hh_income)) %>%
   left_join(polgov, by = "place_geoid") %>%
-  left_join(pdec %>% select(place_geoid, dv_pause, dv_ban, dv_any, dv_any_local), by = "place_geoid") %>%
+  left_join(pdec %>% select(place_geoid, starts_with("dv_")), by = "place_geoid") %>%
   mutate(
-    across(c(dv_pause, dv_ban, dv_any, dv_any_local), ~ coalesce(as.integer(.x), 0L)),
+    across(starts_with("dv_"), ~ coalesce(as.integer(.x), 0L)),
     state_fips   = substr(place_geoid, 1, 2),
     log_pop      = log(population),
     log_area     = log(land_area_sqkm),
@@ -123,10 +124,12 @@ lines <- c(lines, row_tex(count_block(q, "action", ACT), n_tot),
                   "township governments (Census county subdivisions), which fall outside the Census place universe. ",
                   "Every decision was confirmed against a source document (council minutes, a government release, or local news) ",
                   "on October 26, 2026. Sources: the DeFlock ``wins'' register, a Nexis Uni search of local news, and a search for ",
-                  "decisions those two had not yet recorded, seeded by public trackers (Finding Flock, whoapprovedthis.org, ",
-                  "gettheflockoutofhere.com) and state and local news. ``Followed a state action'': Florida agencies acting on the ",
-                  "state Department of Transportation's revocation of ALPR permits on state roads (August 31, 2026), Texas agencies ",
-                  "acting on the governor's pause of state grant funding, and Washington agencies complying with SB 6002. ",
+                  "decisions those two had not yet recorded: every entry of two national trackers (deflocktheusa.com, whoapprovedthis.org) ",
+                  "checked against local sources, plus state-by-state searches of local news and council records. ``Followed a state action'': decisions made because of a ",
+                  "state law, order, or request --- chiefly Florida agencies acting on the state Department of Transportation's revocation of ",
+                  "ALPR permits on state roads (August 31, 2026), Texas agencies acting on the governor's pause of state grant funding, and ",
+                  "Washington agencies complying with SB 6002; also Vermont's ALPR statute and the Connecticut governor's pause request. ",
+                  "Partial actions (only some cameras, only new installations, only state-road cameras) are counted as decisions. ",
                   "Reasons are as stated by the deciding body or reported in coverage; ``privacy'' includes general surveillance ",
                   "concerns. States with eight or more decisions: ",
                   paste(sprintf("%s (%d)", top_st$state, top_st$n), collapse = ", "), "."),
@@ -204,17 +207,20 @@ BLOCKS <- list("Camera exposure" = c("has_camera", "log_cameras"),
 md <- p %>% filter(if_all(all_of(names(X)), ~ !is.na(.x)))
 f_of <- function(y) reformulate(names(X), response = y)
 
-fit_firth <- function(y) {
-  fm <- f_of(y)
-  m <- do.call(logistf, list(formula = fm, data = md, plconf = NULL))
-  list(b = coef(m), se = sqrt(diag(vcov(m))), p = m$prob, n = nrow(md), ev = sum(md[[y]]),
-       ll = m$loglik[["full"]], model = m)
+fit_firth <- function(y, d = md, x = names(X)) {
+  fm <- reformulate(x, response = y)
+  m <- do.call(logistf, list(formula = fm, data = d, plconf = NULL))
+  list(b = coef(m), se = sqrt(diag(vcov(m))), p = m$prob, n = nrow(d), ev = sum(d[[y]]),
+       ll = m$loglik[["full"]], est = "Firth", states = "48 + DC")
 }
-fits <- lapply(c(any = "dv_any", ban = "dv_ban", pause = "dv_pause", local = "dv_any_local"), fit_firth)
+fits <- lapply(c(any = "dv_any", ban = "dv_ban", pause = "dv_pause", local = "dv_any_local",
+                 whole = "dv_any_whole", highconf = "dv_any_highconf", flock = "dv_any_flock"), fit_firth)
+# adopters only: the risk set for reversal, so the adoption dummy drops out
+fits$adopters <- fit_firth("dv_any", md %>% filter(has_camera == 1), setdiff(names(X), "has_camera"))
 fe <- feglm(as.formula(paste("dv_any ~", paste(names(X), collapse = " + "), "| state_fips")),
             data = md, family = binomial, cluster = ~state_fips)
 fe_fit <- list(b = coef(fe), se = se(fe), p = pvalue(fe), n = nobs(fe), ev = sum(fe$y), ll = as.numeric(logLik(fe)),
-               groups = length(unique(md$state_fips[obs(fe)])))
+               est = "Logit", states = as.character(length(unique(md$state_fips[obs(fe)]))))
 
 # 1-SD average marginal effects (observed-value approach, Hanmer & Kalkan 2013),
 # predictions from the intercept-corrected Firth fit (FLIC) so rare-event
@@ -239,40 +245,55 @@ write_csv(ames, "output/tables/ban_model_ame.csv")
 star <- function(p) ifelse(p < .01, "$^{***}$", ifelse(p < .05, "$^{**}$", ifelse(p < .1, "$^{*}$", "")))
 num <- function(x) { d <- if (abs(x) < .01) 4 else 3; s <- formatC(x, format = "f", digits = d); sub("^-", "$-$", s) }
 cell <- function(f, v) if (v %in% names(f$b)) sprintf("%s%s (%s)", num(f$b[[v]]), star(f$p[[v]]), num(f$se[[v]])) else "--"
-cols <- list(fits$any, fits$ban, fits$pause, fe_fit, fits$local)
-tl <- c("% Generated by scripts/05_bans_analysis.R -- do not edit by hand.",
-        "\\begin{table}[htbp]\\centering",
-        "\\caption{Which places restricted ALPRs? Penalised logit, place level}",
-        "\\label{tab:ban-models}", "\\footnotesize", "\\setlength{\\tabcolsep}{2pt}", "\\renewcommand{\\arraystretch}{1.15}",
-        "\\begin{tabular*}{\\textwidth}{@{\\extracolsep{\\fill}}lccccc@{}}", "\\toprule",
-        " & Any & & & Any, & Any, \\\\",
-        " & restriction & Ban & Pause & state FE & local only \\\\",
-        " & (1) & (2) & (3) & (4) & (5) \\\\", "\\midrule")
-for (blk in names(BLOCKS)) {
-  tl <- c(tl, sprintf("\\addlinespace[2pt]\\multicolumn{6}{@{}l}{\\textit{%s}} \\\\[1pt]", blk))
-  for (v in BLOCKS[[blk]]) tl <- c(tl, sprintf("\\quad %s & %s \\\\", X[[v]], paste(sapply(cols, cell, v = v), collapse = " & ")))
+row_of <- function(cols, f) paste(sapply(cols, f), collapse = " & ")
+
+model_table <- function(cols, head1, head2, caption, label, note, file) {
+  k <- length(cols)
+  tl <- c("% Generated by scripts/05_bans_analysis.R -- do not edit by hand.",
+          "\\begin{table}[htbp]\\centering", sprintf("\\caption{%s}", caption), sprintf("\\label{%s}", label),
+          "\\footnotesize", "\\setlength{\\tabcolsep}{2pt}", "\\renewcommand{\\arraystretch}{1.15}",
+          sprintf("\\begin{tabular*}{\\textwidth}{@{\\extracolsep{\\fill}}l%s@{}}", strrep("c", k)), "\\toprule",
+          sprintf(" & %s \\\\", paste(head1, collapse = " & ")), sprintf(" & %s \\\\", paste(head2, collapse = " & ")),
+          sprintf(" & %s \\\\", paste(sprintf("(%d)", seq_len(k)), collapse = " & ")), "\\midrule")
+  for (blk in names(BLOCKS)) {
+    tl <- c(tl, sprintf("\\addlinespace[2pt]\\multicolumn{%d}{@{}l}{\\textit{%s}} \\\\[1pt]", k + 1, blk))
+    for (v in BLOCKS[[blk]]) tl <- c(tl, sprintf("\\quad %s & %s \\\\", X[[v]], row_of(cols, function(f) cell(f, v))))
+  }
+  c(tl, "\\midrule",
+    sprintf("Constant & %s \\\\", row_of(cols, function(f) cell(f, "(Intercept)"))),
+    sprintf("Places & %s \\\\", row_of(cols, function(f) fmt_int(f$n))),
+    sprintf("Places that acted & %s \\\\", row_of(cols, function(f) fmt_int(f$ev))),
+    sprintf("Estimator & %s \\\\", row_of(cols, function(f) f$est)),
+    sprintf("States & %s \\\\", row_of(cols, function(f) f$states)),
+    sprintf("Log-likelihood & %s \\\\", row_of(cols, function(f) sub("^-", "$-$", formatC(f$ll, format = "f", digits = 1, big.mark = ",")))),
+    "\\bottomrule", "\\end{tabular*}", "", "\\vspace{0.5em}",
+    "\\begin{minipage}{\\textwidth}\\footnotesize", note, "\\end{minipage}", "\\end{table}") %>%
+    writeLines(file)
 }
-tl <- c(tl, "\\midrule",
-        sprintf("Constant & %s & -- & %s \\\\", paste(sapply(cols[1:3], cell, v = "(Intercept)"), collapse = " & "), cell(fits$local, "(Intercept)")),
-        sprintf("Places & %s \\\\", paste(sapply(cols, function(f) fmt_int(f$n)), collapse = " & ")),
-        sprintf("Places that acted & %s \\\\", paste(sapply(cols, function(f) fmt_int(f$ev)), collapse = " & ")),
-        "Estimator & Firth & Firth & Firth & Logit & Firth \\\\",
-        sprintf("States & 48 + DC & 48 + DC & 48 + DC & %d & 48 + DC \\\\", fe_fit$groups),
-        sprintf("Log-likelihood & %s \\\\", paste(sapply(cols, function(f) sub("^-", "$-$", formatC(f$ll, format = "f", digits = 1, big.mark = ","))), collapse = " & ")),
-        "\\bottomrule", "\\end{tabular*}", "", "\\vspace{0.5em}",
-        "\\begin{minipage}{\\textwidth}\\footnotesize",
-        paste0("\\textit{Notes.} Coefficients on the log-odds scale; standard errors in parentheses. ",
-               "$^{*}$p$<$0.1; $^{**}$p$<$0.05; $^{***}$p$<$0.01. ",
-               "Columns 1--3: Firth penalised-likelihood logit (rare events), $p$-values from the penalised likelihood-ratio test. ",
-               "Column 4: ordinary logit with state fixed effects and state-clustered standard errors; states with no restricting place drop out. ",
-               "Column 5 drops decisions that followed a state action (Table~\\ref{tab:ban-counts}). ",
-               "Universe: the place universe of Table~\\ref{tab:descriptives}, less places without 2020 vote data (Alaska, Hawaii, and places with no ",
-               "reallocated returns). \\textit{Any restriction} = any confirmed pause, ban, or rejection through September 30, 2026; ",
-               "\\textit{Ban} = cancelled, not renewed, banned by ordinance, or cancelled to switch vendor; \\textit{Pause} = suspended pending review. ",
-               "Camera exposure enters as both margins of the hurdle: whether the place has any mapped camera, and how many. ",
-               "Descriptive associations, not causal effects.") ,
-        "\\end{minipage}", "\\end{table}")
-writeLines(tl, "output/tables/tab_ban_models.tex")
+NOTE_COMMON <- paste0("\\textit{Notes.} Coefficients on the log-odds scale; standard errors in parentheses. ",
+                      "$^{*}$p$<$0.1; $^{**}$p$<$0.05; $^{***}$p$<$0.01. ",
+                      "Firth columns: penalised-likelihood logit (rare events), $p$-values from the penalised likelihood-ratio test. ",
+                      "Universe: the place universe of Table~\\ref{tab:descriptives}, less places without 2020 vote data (Alaska, Hawaii, and places with no ",
+                      "reallocated returns). Camera exposure enters as both margins of the hurdle: whether the place has any mapped camera, and how many. ",
+                      "Descriptive associations, not causal effects.")
+model_table(list(fits$any, fits$ban, fits$pause, fe_fit),
+            c("Any", "", "", "Any,"), c("restriction", "Ban", "Pause", "state FE"),
+            "Which places restricted ALPRs? Penalised logit, place level", "tab:ban-models",
+            paste0(NOTE_COMMON, " \\textit{Any restriction} = any confirmed pause, ban, or rejection through September 30, 2026; ",
+                   "\\textit{Ban} = cancelled, not renewed, banned by ordinance, or cancelled to switch vendor; \\textit{Pause} = suspended pending review. ",
+                   "Column 4: ordinary logit with state fixed effects and state-clustered standard errors; states with no restricting place drop out. ",
+                   "Robustness checks in Table~\\ref{tab:ban-models-robust}."),
+            "output/tables/tab_ban_models.tex")
+model_table(list(fits$local, fits$whole, fits$highconf, fits$flock, fits$adopters),
+            c("Local", "Whole", "High-confidence", "Flock", "Adopters"), c("initiative", "program", "evidence", "only", "only"),
+            "Which places restricted ALPRs? Robustness of the any-restriction model", "tab:ban-models-robust",
+            paste0(NOTE_COMMON, " Outcome in every column: any restriction (Table~\\ref{tab:ban-models}, column 1), redefined as follows. ",
+                   "(1) Drops decisions that followed a state law or order (Table~\\ref{tab:ban-counts}). ",
+                   "(2) Drops partial actions --- those covering only some cameras, only new installations, or only cameras on state roads. ",
+                   "(3) Keeps only decisions whose source states the action and date explicitly (high confidence). ",
+                   "(4) Drops decisions about a vendor other than Flock Safety. ",
+                   "(5) Restricts the sample to places with at least one mapped camera, the risk set for reversal."),
+            "output/tables/tab_ban_models_robust.tex")
 
 # ---- figure: timeline -------------------------------------------------------------
 pre <- sum(q$month < "2025-01" & q$month != "", na.rm = TRUE)
@@ -310,7 +331,7 @@ writeLines(c("% Generated by scripts/05_bans_analysis.R -- do not edit by hand."
              "\\begin{minipage}{\\textwidth}\\footnotesize",
              sprintf(paste0("\\textit{Notes.} Decisions by places, towns, and counties (Table~\\ref{tab:ban-counts}); ",
                             "%d decisions dated before 2025 and %d undated are not shown. Grey: decisions that followed a ",
-                            "state action (Florida DOT permit revocation, Texas grant-funding pause, Washington SB 6002), any outcome."),
+                            "state law, order, or request (chiefly Florida's DOT permit revocation, the Texas grant-funding pause, and Washington's SB 6002), any outcome."),
                      pre, sum(is.na(q$month) | q$month == "")),
              "\\end{minipage}", "\\end{figure}"), "output/figs/fig_ban_timeline.tex")
 

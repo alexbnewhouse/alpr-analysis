@@ -1,0 +1,622 @@
+Rio de Janeiro,  | other | suspended | 2026-04-29 | not_a_decision
+Red Bay, AL | place | suspended | 2026-08 | confirmed
+Beebe, AR | place | not_renewed | 2026-08-24 | confirmed
+Cabot, AR | place | suspended | 2026-08-06 | confirmed
+Cabot, AR | place | suspended | 2026-08-06 | confirmed|dedup
+Camden, AR | place | canceled | 2026-09-25 | confirmed
+Camden, AR | place | canceled | 2026-09-25 | confirmed|dedup
+Centerton, AR | place | canceled | 2026-08-11 | confirmed
+Farmington, AR | place | not_renewed | 2026-08 | confirmed
+Farmington, AR | place | not_renewed | 2026-08 | confirmed|dedup
+Farmington, AR | place | not_renewed | 2026-08 | confirmed|dedup
+Greenwood, AR | place | canceled | 2026-09 | confirmed
+Greers Ferry, AR | place | canceled | 2026-08-12 | confirmed
+Mayflower, AR | place | canceled | 2026-08-10 | confirmed
+Pea Ridge, AR | place | canceled | 2026-07-24 | confirmed
+Searcy, AR | place | not_renewed | 2026-08-11 | confirmed
+Searcy, AR | place | canceled | 2026-08-13 | confirmed|dedup
+Washington County, AR | county | ordinance_ban | 2026-09 | confirmed
+Cave Creek, AZ | place | canceled | 2026-08-26 | confirmed
+Chandler, AZ | place | not_renewed | 2026-08-07 | confirmed
+Cottonwood, AZ | place | suspended | 2026-09-04 | confirmed
+Flagstaff, AZ | place | canceled | 2025-12-16 | confirmed
+Payson, AZ | place | canceled | 2026-09-05 | confirmed
+Pinal County, AZ | county | not_renewed | 2026-08-05 | confirmed
+Sedona, AZ | place | canceled | 2025-09 | confirmed
+Sierra Vista, AZ | place | canceled | 2026-02-24 | confirmed
+South Tucson, AZ | place | canceled | 2026-02-17 | confirmed
+Surprise, AZ | place | canceled | 2026-08-13 | confirmed
+Tempe, AZ | place | canceled | 2026-08-26 | confirmed
+Tempe, AZ | place | canceled | 2026-08-26 | duplicate
+Tempe, AZ | place | canceled | 2026-08-26 | confirmed|dedup
+Berkeley, CA | place |  | 2025-08 | not_a_decision
+Bishop, CA | place | canceled | 2026-06-22 | confirmed
+Brentwood, CA | place |  | 2026-08-11 | not_a_decision
+Brentwood, CA | place |  | 2026-08-11 | not_a_decision
+El Cerrito, CA | place | not_renewed | 2026-05-05 | confirmed
+Eureka, CA | place | declined_to_adopt | 2025-02-04 | confirmed
+Grass Valley, CA | place | canceled | 2026-08-11 | confirmed
+Lakewood, CA | place | declined_to_adopt | 2026-03-24 | confirmed
+Los Altos Hills, CA | place | canceled | 2026-01-15 | confirmed
+Los Angeles, CA | place | suspended | 2026-07-11 | confirmed
+Mountain View, CA | place | canceled | 2026-02-24 | confirmed
+Oceano Community Services District, CA | other | declined_to_adopt | 2026-07-08 | confirmed
+Oxnard, CA | place | suspended | 2026-02-27 | confirmed
+Pasadena, CA | place | considered_no_action |  | not_a_decision
+Richmond, CA | place | suspended | 2025-11 | confirmed
+San Diego, CA | place | adopted | 2025-12 | confirmed
+San Francisco, CA | place |  | 2026-06-17 | not_a_decision
+Santa Barbara, CA | place | not_renewed | 2026-08-25 | confirmed
+Santa Clara County, CA | county | canceled | 2026-02-24 | confirmed
+Santa Cruz, CA | place | canceled | 2026-01-13 | confirmed
+Siskiyou County, CA | county | suspended |  | unconfirmed
+South Pasadena, CA | place | not_renewed | 2026-03-18 | confirmed
+Denver, CO | place | declined_to_adopt | 2025-05-05 | confirmed
+Denver, CO | place | replaced_vendor | 2026-02-24 | confirmed
+Douglas County, CO | county | replaced_vendor | 2026-07-14 | confirmed
+Elbert County, CO | county | not_renewed | 2023-12 | confirmed
+Englewood, CO | place | canceled | 2026-09-08 | confirmed
+Fort Collins, CO | place | canceled | 2026-06-16 | confirmed
+Longmont, CO | place | suspended | 2025-12-09 | confirmed
+Louisville, CO | place | suspended | 2025-06-30 | confirmed
+Moffat County, CO | county | not_renewed | 2026-08-13 | confirmed
+Routt County, CO | county | canceled | 2026-08-31 | confirmed
+Salida, CO | place | canceled | 2026-08-13 | confirmed
+Salida, CO | place | canceled | 2026-08-13 | confirmed|dedup
+Steamboat Springs, CO | place | canceled | 2026-08-27 | confirmed
+Bethel, CT | place | suspended | 2026-08-18 | confirmed
+Connecticut, CT | other | suspended | 2026-08-07 | not_a_decision
+East Lyme, CT | place | suspended | 2026-09-25 | confirmed
+Killingworth, CT | place | canceled | 2026-07 | confirmed
+Killingworth, CT | place | canceled | 2026-07 | confirmed|dedup
+Ledyard, CT | place | suspended | 2026-09 | confirmed
+Manchester, CT | place | suspended | 2026-08 | unconfirmed
+Milford, CT | place | suspended |  | confirmed
+Milford, CT | place | suspended | 2026-10-05 | confirmed
+Windsor, CT | place | suspended | 2026-02-17 | confirmed
+Windsor, CT | place | canceled | 2026-07-06 | confirmed
+Wilmington, DE | place | canceled | 2026-08 | confirmed
+Alachua, FL | place | canceled | 2026-09-04 | unconfirmed
+Alachua County, FL | county | canceled | 2026-08-31 | unconfirmed
+Altamonte Springs, FL | place | suspended | 2026-08-31 | confirmed
+Baker County, FL | county | suspended | 2026-08-31 | confirmed
+Baker County, FL | county | suspended | 2026-08-31 | confirmed|dedup
+Bay County, FL | county | suspended | 2026-09-01 | confirmed
+Bradford County, FL | county | suspended | 2026-08-31 | confirmed
+Calhoun County, FL | county | canceled | 2026-09 | confirmed
+Clay County, FL | county | canceled | 2026-08-31 | confirmed
+Clay County, FL | county | canceled | 2026-08-31 | confirmed|dedup
+Duval County, FL | county | canceled | 2026-08-31 | confirmed|dedup
+Fernandina Beach, FL | place | canceled | 2026-09-01 | confirmed
+Fernandina Beach, FL | place | canceled | 2026-09-01 | confirmed|dedup
+Flagler County, FL | county | suspended | 2026-09-02 | confirmed
+Franklin County, FL | county | canceled | 2026-08-31 | confirmed
+Franklin County, FL | county | canceled | 2026-08-31 | confirmed|dedup
+Gadsden County, FL | county | suspended | 2026-09 | confirmed
+Gainesville, FL | place | suspended | 2026-09-03 | unconfirmed
+Holmes County, FL | county | canceled | 2026-09 | confirmed
+Jackson County, FL | county | suspended | 2026-09-01 | confirmed
+Jacksonville, FL | place | canceled | 2026-08-31 | confirmed
+Jefferson County, FL | county | suspended | 2026-09 | confirmed
+Lake County, FL | county | canceled | 2021-08 | confirmed
+Lake County, FL | county | canceled | 2026-09-01 | confirmed
+Leon County, FL | county | declined_to_adopt | 2026-07-16 | unconfirmed
+Leon County, FL | county | suspended | 2026-08-31 | confirmed
+Leon County, FL | county | suspended | 2026-08-31 | confirmed|dedup
+Liberty County, FL | county | suspended | 2026-09 | confirmed
+Live Oak, FL | place | canceled | 2026-09-08 | confirmed
+Live Oak, FL | place | canceled | 2026-09-08 | confirmed|dedup
+Miami-Dade County, FL | county | suspended | 2026-09-01 | confirmed
+Miami-Dade County, FL | county | suspended | 2026-09-01 | confirmed|dedup
+Nassau County, FL | county | suspended | 2026-08-31 | unconfirmed
+Neptune Beach, FL | place | suspended | 2026-09-02 | unconfirmed
+Okaloosa County, FL | county | suspended | 2026-08-31 | confirmed
+Okaloosa County, FL | county | canceled | 2026-08-31 | confirmed
+Osceola County, FL | county | suspended | 2026-09-01 | confirmed
+Oviedo, FL | place | canceled | 2026-08-31 | confirmed
+Oviedo, FL | place | canceled | 2026-08-31 | confirmed|dedup
+Palm Bay, FL | place | suspended | 2026-08-07 | confirmed
+Palm Bay, FL | place | suspended | 2026-08-07 | confirmed|dedup
+Palm Beach County, FL | county | suspended | 2026-09 | confirmed
+Palm Beach County, FL | county | suspended | 2026-09 | confirmed|dedup
+Panama City, FL | place | canceled | 2026-09-08 | confirmed
+Panama City, FL | place | canceled | 2026-09-08 | confirmed|dedup
+Pasco County, FL | county | canceled | 2026-08-26 | confirmed
+Pembroke Pines, FL | place | suspended | 2026-09-02 | confirmed
+Pembroke Pines, FL | place | suspended | 2026-09-02 | confirmed|dedup
+Pensacola, FL | place | suspended | 2026-09 | confirmed
+Port St. Lucie, FL | place | suspended | 2026-09-01 | confirmed
+Port St. Lucie, FL | place | suspended | 2026-09-01 | confirmed|dedup
+Putnam County, FL | county | canceled | 2026-08-31 | confirmed
+Putnam County, FL | county | canceled | 2026-08-31 | confirmed|dedup
+Santa Rosa County, FL | county | suspended | 2026-09 | confirmed
+Seminole County, FL | county | suspended | 2026-08-31 | confirmed
+St. Lucie County, FL | county | canceled |  | unconfirmed
+Sumter County, FL | county | suspended | 2026-07-24 | confirmed
+Sumter County, FL | county | suspended | 2026-07-24 | confirmed|dedup
+Tallahassee, FL | place | suspended | 2026-09-09 | confirmed
+Tallahassee, FL | place | suspended | 2026-09-09 | confirmed|dedup
+Titusville, FL | place | suspended | 2026-08-31 | confirmed
+Titusville, FL | place | suspended | 2026-08-31 | confirmed|dedup
+Volusia County, FL | county | suspended | 2026-08-31 | confirmed
+Volusia County, FL | county | suspended | 2026-09-01 | confirmed|dedup
+Wakulla County, FL | county | suspended | 2026-09 | confirmed
+Walton County, FL | county | canceled | 2026-08-25 | confirmed
+Winter Springs, FL | place | suspended | 2026-09-01 | confirmed
+Nelson, GA | place | canceled | 2026-07 | confirmed|dedup
+Nelson, GA | place | canceled | 2026-07-13 | confirmed
+Coralville, IA | place | canceled | 2026-02-24 | confirmed
+Coralville, IA | place | canceled | 2026-02-24 | confirmed|dedup
+Indianola, IA | place | suspended | 2026-08-17 | confirmed
+Osceola, IA | place | canceled | 2026-09 | unconfirmed
+Waukee, IA | place | not_renewed | 2026-08-14 | confirmed
+Clearwater County, ID | county | not_renewed | 2026-07 | confirmed
+Garden City, ID | place | considered_no_action | 2026-08 | confirmed
+Jerome, ID | place | not_renewed | 2026-08 | confirmed
+Jerome County, ID | county | not_renewed | 2026-09 | confirmed
+Lincoln County, ID | county | canceled | 2026-08-25 | duplicate
+Lincoln County, ID | county | canceled | 2026-08-25 | confirmed
+Cortland, IL | place | canceled | 2026-08-21 | confirmed
+Evanston, IL | place | canceled | 2025-08-26 | confirmed
+Galva, IL | place | canceled | 2026-08-26 | confirmed
+Henry County, IL | county | canceled | 2026-08-19 | confirmed
+Moline, IL | place | suspended | 2026-09 | confirmed
+Moline, IL | place | suspended | 2026-09 | unconfirmed
+Oak Park, IL | place | canceled | 2025-08-05 | confirmed
+Salem, IL | place | canceled | 2026-04 | confirmed
+Sterling, IL | place | canceled | 2026-09 | unconfirmed
+Sterling, IL | place | canceled | 2026-09-21 | confirmed
+Teutopolis, IL | place | declined_to_adopt | 2026-07 | confirmed
+Bloomington, IN | place | not_renewed | 2026-04-15 | confirmed
+Chesterton, IN | place | canceled | 2026-09 | confirmed
+Fort Wayne, IN | place | declined_to_adopt | 2026-08-25 | confirmed
+Kosciusko County, IN | county | canceled | 2026-09-10 | confirmed
+Kosciusko County, IN | county | canceled | 2026-09-10 | confirmed|dedup
+Marshall County, IN | county | canceled | 2026-09-14 | confirmed
+Monroe County, IN | county | canceled | 2026-07-23 | confirmed
+Whiteland, IN | place | declined_to_adopt | 2025-12-16 | confirmed
+Gardner, KS | place | not_renewed | 2026-08-17 | confirmed
+Gardner, KS | place | canceled | 2026-08-17 | confirmed|dedup
+Wellsville, KS | place | canceled | 2026-08 | confirmed
+Bellevue, KY | place | suspended | 2026-09-09 | confirmed
+Bellevue, KY | place | suspended | 2026-09-09 | confirmed|dedup
+Edgewood, KY | place | suspended | 2026-09 | confirmed|dedup
+Edgewood, KY | place | suspended | 2026-09-03 | confirmed
+Erlanger, KY | place | canceled | 2026-08 | confirmed
+Erlanger, KY | place | not_renewed | 2026-08 | confirmed|dedup
+Fort Mitchell, KY | place | canceled | 2026-08 | unconfirmed
+Fort Thomas, KY | place | canceled | 2026-08 | confirmed
+Independence, KY | place | canceled | 2026-08 | confirmed|dedup
+Independence, KY | place | canceled | 2026-08-24 | confirmed
+Independence, KY | place | canceled | 2026-08-24 | confirmed|dedup
+Newport, KY | place | declined_to_adopt | 2026-07-14 | confirmed
+New Orleans, LA | place | considered_no_action | 2022-05-04 | not_a_decision
+Abington, MA | place | canceled | 2026-08 | confirmed|dedup
+Abington, MA | place | canceled | 2026-08-31 | confirmed
+Acushnet, MA | place | suspended | 2026-09-02 | confirmed
+Attleboro, MA | place | canceled | 2026-03 | confirmed
+Auburn, MA | place | canceled | 2026-08-25 | confirmed
+Auburn, MA | place | canceled | 2026-08-25 | confirmed|dedup
+Ayer, MA | place | canceled | 2026-08-31 | confirmed
+Ayer, MA | place | canceled | 2026-08-31 | confirmed|dedup
+Barnstable, MA | place | canceled | 2026-09 | confirmed|dedup
+Barnstable, MA | place | canceled | 2026-09-03 | confirmed
+Barre, MA | place | suspended | 2026-09 | confirmed
+Bellingham, MA | place | not_renewed | 2026-08-26 | confirmed
+Bellingham, MA | place | not_renewed | 2026-08-26 | confirmed|dedup
+Boston, MA | place | canceled | 2026-09-14 | confirmed
+Boylston, MA | place | canceled | 2026-09-11 | confirmed
+Boylston, MA | place | suspended | 2026-09-11 | confirmed
+Cambridge, MA | place | canceled | 2025-12-10 | confirmed
+Cohasset, MA | place | not_renewed | 2026-08-25 | confirmed
+Dartmouth, MA | place | not_renewed | 2026-08-31 | confirmed
+Dartmouth, MA | place | not_renewed | 2026-08-31 | confirmed|dedup
+Dennis, MA | place | canceled |  | confirmed
+Douglas, MA | place | suspended | 2026-08 | confirmed
+Douglas, MA | place | canceled | 2026-08-24 | confirmed
+East Bridgewater, MA | place | canceled | 2026-08-21 | confirmed
+East Bridgewater, MA | place | canceled | 2026-08-21 | confirmed|dedup
+East Bridgewater, MA | place | canceled | 2026-08-21 | confirmed|dedup
+Easton, MA | place | canceled | 2026-08 | confirmed
+Framingham, MA | place | not_renewed | 2026-06-22 | confirmed
+Grafton, MA | place | suspended | 2026-08-21 | confirmed
+Grafton, MA | place | canceled | 2026-08-21 | confirmed
+Greenfield, MA | place | canceled | 2026-01-22 | unconfirmed
+Groton, MA | place | canceled | 2026-08-31 | confirmed
+Groton, MA | place | canceled | 2026-08-31 | confirmed|dedup
+Hopkinton, MA | place | canceled | 2026-08-20 | confirmed
+Littleton, MA | place | suspended | 2026-05 | confirmed
+Littleton, MA | place | canceled | 2026-07 | confirmed|dedup
+Littleton, MA | place | canceled | 2026-07-30 | confirmed
+Lowell, MA | place | suspended | 2026-09-22 | confirmed
+Methuen, MA | place | canceled | 2026-09-23 | confirmed
+Methuen, MA | place | canceled | 2026-09-23 | confirmed|dedup
+Nantucket, MA | place | canceled | 2026-09-16 | confirmed
+Natick, MA | place | canceled | 2026-01-21 | confirmed
+Natick, MA | place | canceled | 2026-01-21 | unconfirmed
+New Bedford, MA | place | suspended | 2026-08 | confirmed|dedup
+New Bedford, MA | place | suspended | 2026-08-11 | confirmed
+New Bedford, MA | place | suspended | 2026-08-11 | confirmed|dedup
+North Attleboro, MA | place | suspended | 2026-09 | confirmed|dedup
+North Attleborough, MA | place | suspended | 2026-09-28 | confirmed
+Norwell, MA | place | canceled | 2026-09-30 | confirmed
+Salem, MA | place | replaced_vendor | 2026-07-23 | confirmed
+Sharon, MA | place | not_renewed | 2026-06-23 | confirmed
+Southbridge, MA | place | suspended | 2026-08-31 | confirmed
+Southbridge, MA | place | suspended | 2026-08-31 | confirmed|dedup
+Stoughton, MA | place | canceled | 2026-09-08 | confirmed
+Stow, MA | place | canceled | 2026-08-18 | confirmed
+Stow, MA | place | canceled | 2026-08-18 | confirmed|dedup
+Tewksbury, MA | place | canceled | 2026-09 | confirmed|dedup
+Tewksbury, MA | place | canceled | 2026-09-25 | confirmed
+Waltham, MA | place | canceled | 2026-09 | unconfirmed
+Watertown, MA | place | canceled | 2026-01-27 | confirmed
+Wellesley, MA | place | canceled | 2026-08 | confirmed
+Wilmington, MA | place | canceled | 2026-09-14 | confirmed
+Auburn, ME | place | not_renewed | 2026-08 | confirmed
+Auburn, ME | place | not_renewed | 2026-08 | confirmed|dedup
+South Portland, ME | place | canceled | 2026-06-11 | confirmed
+Adrian, MI | place | canceled | 2026-09 | unconfirmed
+Alpena County, MI | county | declined_to_adopt | 2026-03 | confirmed
+Alpena County, MI | county | declined_to_adopt | 2026-03 | confirmed|dedup
+Bay City, MI | place | declined_to_adopt | 2025-11-17 | confirmed
+Clawson, MI | place | not_renewed | 2026-05 | confirmed
+Dickinson County, MI | county | canceled | 2026-08-10 | confirmed
+Dickinson County, MI | other | canceled | 2026-07 | confirmed
+Eastpointe, MI | place | canceled | 2026-09-15 | confirmed
+Eastpointe, MI | place | canceled | 2026-09-15 | confirmed|dedup
+Ferndale, MI | place | canceled | 2025-11-13 | confirmed
+Ferndale, MI | place | canceled | 2025-11-13 | confirmed|dedup
+Independence Township, MI | place | canceled | 2026-09-08 | confirmed
+Lansing, MI | place | canceled | 2026-08-24 | confirmed
+Lincoln Park, MI | place | suspended | 2026-09-28 | confirmed
+Menominee, MI | place | canceled | 2026-05-18 | confirmed
+Milford, MI | place | canceled | 2026-06 | confirmed
+Monroe County, MI | county | canceled | 2026-09-01 | confirmed
+Oceana County, MI | county | canceled | 2026-08 | confirmed
+South Lyon, MI | place | not_renewed | 2026-09-28 | confirmed
+South Lyon, MI | place | not_renewed | 2026-09-28 | confirmed|dedup
+St. Clair Shores, MI | place | suspended | 2026-09 | unconfirmed
+Sturgis, MI | place | not_renewed | 2026-09-25 | confirmed
+Sumpter Township, MI | place | canceled | 2026-08 | confirmed|dedup
+Sumpter Township, MI | place | canceled | 2026-08-17 | confirmed
+Westland, MI | place | not_renewed | 2026-07-08 | confirmed
+Ypsilanti, MI | place | ordinance_ban | 2022-09-13 | confirmed
+Brooklyn Park, MN | place | canceled | 2025-12 | confirmed
+Champlin, MN | place | suspended | 2026-08 | unconfirmed
+Columbia Heights, MN | place | canceled | 2026-06-08 | confirmed
+Crystal, MN | place | canceled | 2026-09 | confirmed
+Crystal, MN | place | canceled | 2026-09-09 | confirmed|dedup
+Dayton, MN | place | suspended | 2026-08-25 | confirmed
+Dayton, MN | place | suspended | 2026-08-25 | confirmed|dedup
+Duluth, MN | place | not_renewed | 2026-08-10 | confirmed
+Isanti County, MN | county | canceled | 2026-08 | confirmed
+Isanti County, MN | county | not_renewed | 2026-08 | confirmed|dedup
+North Branch, MN | place | suspended | 2026-08 | confirmed
+North Branch, MN | place | suspended | 2026-08 | confirmed|dedup
+Plymouth, MN | place | canceled | 2026-09-22 | confirmed
+Plymouth, MN | place | canceled | 2026-09-22 | confirmed|dedup
+Royalton, MN | place | declined_to_adopt | 2026-07 | confirmed
+Sherburne County, MN | county | canceled | 2026-08-12 | confirmed
+Shorewood, MN | place | suspended | 2026-03-09 | confirmed
+St. Louis County, MN | county | canceled | 2026-08 | confirmed
+St. Louis County, MN | county | canceled | 2026-08-14 | confirmed|dedup
+St. Paul, MN | place | canceled | 2026-08-26 | confirmed
+West St. Paul, MN | place | canceled | 2026-08-10 | confirmed
+Winona, MN | place | canceled | 2026-08-12 | confirmed
+Bolivar, MO | place | canceled | 2026-08-11 | confirmed
+Columbia, MO | place | adopted | 2024-10-07 | confirmed
+Dutchtown CID (St. Louis), MO | other | canceled | 2026-03 | confirmed
+Neosho, MO | place | declined_to_adopt | 2026-08 | confirmed
+Parkville, MO | place | suspended | 2026-09-11 | confirmed
+Pulaski County, MO | county | not_renewed | 2026-08-20 | confirmed
+Seneca, MO | place | canceled | 2026-02 | confirmed
+St. Charles County, MO | county | canceled | 2026-08 | confirmed
+Weston, MO | place | canceled | 2026-04 | confirmed
+Willard, MO | place | not_renewed | 2026-08-21 | confirmed|dedup
+Willard, MO | place | canceled | 2026-08-24 | confirmed
+Jackson, MS | place | canceled | 2025-10 | not_a_decision
+Asheville, NC | place | canceled | 2026-08-25 | confirmed
+Atkinson, NC | place | ordinance_ban |  | unconfirmed
+Boone, NC | place | suspended | 2026-05 | unconfirmed
+Brevard, NC | place | declined_to_adopt | 2026-09-08 | unconfirmed
+Catawba, NC | place | not_renewed | 2026-09 | confirmed
+Catawba, NC | place | declined_to_adopt | 2026-09 | confirmed
+Chatham County, NC | county | canceled | 2026-04-20 | confirmed
+Dare County, NC | county | canceled | 2026-09-01 | confirmed
+Davidson County, NC | county | canceled | 2026-08-24 | confirmed
+Greenville, NC | place | declined_to_adopt | 2026-08-28 | confirmed
+Hillsborough, NC | place | canceled | 2025-10-27 | confirmed
+Kitty Hawk, NC | place | canceled | 2026-09-08 | unconfirmed
+Macon County, NC | county | canceled | 2026-07-14 | confirmed
+New Hanover County, NC | county | canceled | 2026-09-08 | confirmed
+New Hanover County, NC | county | canceled | 2026-09-08 | confirmed|dedup
+Pittsboro, NC | place | canceled | 2026-05-11 | confirmed
+Reidsville, NC | place | canceled | 2026-09-10 | unconfirmed
+Horace, ND | place | canceled | 2026-09-21 | confirmed
+Horace, ND | place | canceled | 2026-09-22 | confirmed|dedup
+Ord, NE | place | canceled | 2026-08-03 | confirmed
+Cherry Hill, NJ | place | not_renewed | 2026-09-14 | confirmed
+Bernalillo County, NM | county | canceled | 2026-08-27 | confirmed
+Grants, NM | place | canceled | 2026-08-27 | confirmed
+Taos, NM | place | not_renewed | 2026-07-28 | confirmed
+Sparks, NV | place | replaced_vendor | 2026-07 | unconfirmed
+Auburn, NY | place | canceled | 2026-08 | confirmed|dedup
+Auburn, NY | place | canceled | 2026-08-20 | confirmed
+Binghamton, NY | place | considered_no_action | 2026-08-06 | confirmed
+Cayuga Heights, NY | place | not_renewed | 2026-06-17 | confirmed
+Hartland, NY | place | canceled | 2026-09 | confirmed
+Hartland, NY | place | canceled | 2026-09 | confirmed|dedup
+Ithaca, NY | place | canceled | 2026-03-04 | confirmed
+Ithaca, NY | place | canceled | 2026-03-04 | duplicate
+Milan, NY | place | suspended | 2026-09-21 | confirmed
+New Lebanon, NY | place | declined_to_adopt | 2026-09-08 | confirmed
+Newburgh, NY | place | canceled | 2026-09-28 | confirmed
+Newburgh, NY | place | canceled | 2026-09-28 | confirmed|dedup
+North Tonawanda, NY | place | suspended | 2026-08-19 | unconfirmed
+Pine Plains, NY | place | canceled | 2026-02-03 | unconfirmed
+Poestenkill, NY | place | declined_to_adopt | 2025-12 | confirmed
+Poestenkill, NY | place | declined_to_adopt | 2025-12-11 | confirmed|dedup
+Saranac Lake, NY | place | canceled | 2026-03-09 | confirmed
+Scarsdale, NY | place | canceled | 2025-08-06 | confirmed
+Syracuse, NY | place | replaced_vendor | 2026-03-23 | confirmed
+Tompkins County, NY | county | canceled | 2026-04-14 | confirmed
+Trumansburg, NY | place | not_renewed | 2026-04 | confirmed
+Cleveland, OH | place | not_renewed | 2026-06-17 | confirmed
+Columbus, OH | place | suspended | 2026-09-03 | confirmed
+Columbus, OH | place | suspended | 2026-09-03 | confirmed|dedup
+Coshocton County, OH | county | canceled | 2026-08-13 | confirmed
+Dayton, OH | place | suspended | 2026-05 | confirmed
+Dayton, OH | place | suspended | 2026-05 | confirmed|dedup
+Hamilton County, OH | county | suspended | 2026-09-03 | confirmed
+Hubbard, OH | place | not_renewed | 2026-08 | confirmed
+Hunter, OH | other |  |  | not_a_decision
+Kent, OH | place | declined_to_adopt | 2025-11-05 | confirmed
+Lebanon, OH | place | suspended | 2026-09 | confirmed
+Lebanon, OH | place | canceled | 2026-09-08 | confirmed
+Lorain County, OH | county | canceled | 2026-09-04 | confirmed
+Lorain County, OH | county | canceled | 2026-09-04 | confirmed|dedup
+Monroe, OH | place | not_renewed | 2026-09-22 | confirmed
+Monroe, OH | place | canceled | 2026-09-22 | confirmed|dedup
+Olentangy Local Schools, OH | other | canceled | 2026-08 | confirmed
+Oxford, OH | place | canceled | 2026-08-18 | confirmed
+Pierce Township, OH | place | canceled | 2026-08 | confirmed
+Reynoldsburg, OH | place | canceled | 2026-09-09 | confirmed
+Reynoldsburg, OH | place | canceled | 2026-09-09 | confirmed|dedup
+Streetsboro, OH | place | declined_to_adopt | 2026-08 | confirmed
+Worthington City Schools, OH | other | canceled | 2026-09-01 | confirmed
+Wyandot County, OH | county | canceled | 2026-08 | confirmed
+Coweta, OK | place | canceled | 2026-08 | confirmed
+Guthrie, OK | place | not_renewed | 2025-04 | confirmed
+Latimer County, OK | county | declined_to_adopt | 2026-07-21 | confirmed
+Marietta, OK | place | canceled | 2026-08-20 | confirmed
+Marietta, OK | place | canceled | 2026-08-20 | confirmed|dedup
+Norman, OK | place | declined_to_adopt |  | confirmed
+Albany, OR | place | not_renewed | 2026-05-27 | confirmed
+Bend, OR | place | canceled | 2026-01-07 | confirmed
+Eugene, OR | place | canceled | 2025-12-05 | confirmed
+Josephine County, OR | county | canceled | 2026-08-12 | confirmed
+Lane County, OR | county | suspended | 2025-12-10 | confirmed
+Lincoln City, OR | place | canceled | 2026-01 | confirmed
+Springfield, OR | place | canceled | 2025-12-05 | confirmed
+Talent, OR | place | suspended | 2025-12-17 | confirmed
+Winston, OR | place | canceled | 2026-08-17 | confirmed
+Woodburn, OR | place | canceled | 2026-04 | confirmed
+Abington Township, PA | place | not_renewed | 2026-08 | confirmed|dedup
+Abington Township, PA | place | replaced_vendor | 2026-08-27 | confirmed
+Force, PA | other |  |  | not_a_decision
+Franklin County, PA | county | not_renewed | 2026-08-26 | confirmed
+Foster, RI | place | canceled | 2026-09-10 | confirmed
+Glocester, RI | place | canceled | 2026-08-06 | confirmed
+Glocester, RI | place | canceled | 2026-08-06 | confirmed|dedup
+Lincoln, RI | place | suspended |  | unconfirmed
+Lincoln, RI | place | suspended | 2026-08 | confirmed
+Narragansett, RI | place | canceled | 2026-08 | confirmed|dedup
+Narragansett, RI | place | canceled | 2026-08-03 | confirmed
+North Kingstown, RI | place | canceled | 2026-08-17 | confirmed
+North Kingstown, RI | place | canceled | 2026-08-17 | confirmed|dedup
+Portsmouth, RI | place | declined_to_adopt | 2026-01-28 | confirmed
+South Kingstown, RI | place | canceled | 2026-07-27 | confirmed
+South Kingstown, RI | place | canceled | 2026-07-27 | confirmed|dedup
+Warren, RI | place | declined_to_adopt | 2025-12 | confirmed
+Greer, SC | place | suspended | 2026-08-21 | confirmed
+Greer, SC | place | suspended | 2026-08-21 | confirmed|dedup
+Collegedale, TN | place | canceled | 2026-09-08 | confirmed
+Collegedale, TN | place | canceled | 2026-09-08 | confirmed|dedup
+Coopertown, TN | place | canceled | 2026-09 | confirmed|dedup
+Coopertown, TN | place | canceled | 2026-09-18 | confirmed
+Hamilton County, TN | county | suspended | 2026-08-31 | confirmed
+Hamilton County, TN | county | suspended | 2026-08-31 | confirmed|dedup
+Kingston, TN | place | not_renewed | 2026-08 | confirmed
+Kingston, TN | place | not_renewed | 2026-08 | confirmed|dedup
+Knox County, TN | county | ordinance_ban | 2026-08-31 | confirmed
+Knox County, TN | county | ordinance_ban | 2026-08-31 | confirmed|dedup
+Knoxville, TN | place | replaced_vendor | 2025-12-31 | confirmed
+Sullivan County, TN | county | suspended | 2026-08-17 | confirmed
+White County, TN | county | canceled | 2026-07-20 | confirmed
+White County, TN | county | canceled | 2026-07-20 | confirmed|dedup
+Aransas Pass, TX | place | canceled | 2026-07-20 | confirmed
+Austin, TX | place | not_renewed | 2025-06-03 | confirmed
+Bandera, TX | place | canceled | 2026-05-12 | confirmed
+Bastrop, TX | place | canceled | 2026-09-08 | confirmed
+Bastrop, TX | place | canceled | 2026-09-08 | confirmed|dedup
+Burnet County, TX | county | suspended | 2026-08-03 | confirmed
+Burnet County, TX | county | canceled | 2026-08-04 | confirmed
+Dallas, TX | place | canceled | 2026-09-01 | confirmed
+Deer Park, TX | place |  |  | not_a_decision
+El Paso, TX | place | not_renewed | 2026-09-15 | confirmed
+El Paso, TX | place | canceled | 2026-09-15 | confirmed|dedup
+Elgin, TX | place | suspended | 2026-09-02 | confirmed
+Elgin, TX | place | suspended | 2026-09-02 | confirmed|dedup
+Guadalupe County, TX | county | canceled | 2026-08-04 | confirmed
+Hays County, TX | county | canceled | 2025-10-14 | confirmed
+Hood County, TX | county | canceled | 2026-04 | confirmed
+Hood County, TX | county | canceled | 2026-04 | confirmed|dedup
+Hood County, TX | county | canceled | 2026-08 | confirmed
+Hutto, TX | place | canceled | 2026-09-17 | confirmed
+Hutto, TX | place | canceled | 2026-09-17 | confirmed|dedup
+Kendall County, TX | county | not_renewed | 2026-08-25 | confirmed
+Kendall County, TX | county | not_renewed | 2026-08-25 | confirmed|dedup
+Lago Vista, TX | place | canceled | 2026-08-06 | confirmed
+Leander, TX | place | canceled | 2026-09-03 | confirmed
+Leander, TX | place | canceled | 2026-09-03 | confirmed|dedup
+Liberty Hill, TX | place | canceled | 2026-09-09 | confirmed
+Liberty Hill, TX | place | canceled | 2026-09-09 | confirmed|dedup
+Lockhart, TX | place | declined_to_adopt | 2025-10-09 | confirmed
+Lufkin, TX | place | suspended | 2026-08-20 | confirmed
+Lufkin, TX | place | suspended | 2026-08-20 | confirmed|dedup
+Magnolia, TX | place | not_renewed | 2026-08-11 | confirmed
+Magnolia, TX | place | not_renewed | 2026-09 | confirmed|dedup
+Manor, TX | place | canceled | 2026-09-03 | confirmed
+Manor, TX | place | canceled | 2026-09-03 | confirmed|dedup
+Manvel, TX | place | canceled | 2026-09-08 | confirmed
+Manvel, TX | place | canceled | 2026-09-08 | confirmed|dedup
+Pflugerville, TX | place | not_renewed | 2026-08-25 | confirmed
+Pflugerville ISD, TX | other | suspended | 2026-08 | confirmed
+Plano, TX | place | canceled | 2026-09-14 | confirmed
+Plano, TX | place | canceled | 2026-09-14 | confirmed|dedup
+Princeton, TX | place | declined_to_adopt | 2026-08-28 | unconfirmed
+Robinson, TX | place | not_renewed | 2026-09-01 | confirmed
+Robinson, TX | place | not_renewed | 2026-09-01 | confirmed|dedup
+San Marcos, TX | place | not_renewed | 2025-12-02 | confirmed
+Stephens County, TX | county | canceled | 2026-09-25 | confirmed
+Stephens County, TX | county | canceled | 2026-09-25 | confirmed|dedup
+Willis, TX | place | suspended | 2026-09-08 | confirmed
+Willis, TX | place | suspended | 2026-09-08 | confirmed|dedup
+Wylie, TX | place | not_renewed | 2026-08-25 | confirmed
+Wylie, TX | place | not_renewed | 2026-08-25 | confirmed|dedup
+Salt Lake City, UT | place | suspended | 2025-12 | confirmed
+Washington Terrace, UT | place | canceled | 2026-09 | confirmed
+Amherst County, VA | county | suspended | 2026-09-03 | confirmed
+Amherst County, VA | county | suspended | 2026-09-03 | confirmed|dedup
+Appomattox County, VA | county | not_renewed | 2026-09-02 | confirmed
+Appomattox County, VA | county | canceled | 2026-09-02 | confirmed|dedup
+Arlington County, VA | county | canceled | 2026-09-15 | confirmed
+Arlington County, VA | county | canceled | 2026-09-15 | confirmed|dedup
+Augusta County, VA | county | suspended | 2026-09-28 | confirmed
+Augusta County, VA | county | suspended | 2026-09-28 | confirmed|dedup
+Bedford County, VA | county | suspended | 2026-09-03 | confirmed
+Bedford County, VA | county | suspended | 2026-09-03 | confirmed|dedup
+Bland County, VA | county | canceled | 2026-07-11 | confirmed
+Bland County, VA | county | canceled | 2026-07-11 | confirmed|dedup
+Campbell County, VA | county | canceled | 2026-09-02 | confirmed
+Campbell County, VA | county | canceled | 2026-09-02 | confirmed|dedup
+Carroll County, VA | county | not_renewed | 2026-07 | confirmed
+Carroll County, VA | county | not_renewed | 2026-07 | confirmed|dedup
+Charlotte County, VA | county | canceled | 2026-09 | confirmed
+Charlotte County, VA | county | suspended | 2026-09-01 | confirmed
+Charlottesville, VA | place | not_renewed | 2025-12-17 | confirmed
+Christiansburg, VA | place | canceled | 2026-08-25 | confirmed
+Dumfries, VA | place | suspended | 2026-09-01 | confirmed
+Dumfries, VA | place | suspended | 2026-09-01 | confirmed|dedup
+Elkton, VA | place | canceled | 2026-07-20 | confirmed
+Fairfax County, VA | county | suspended | 2026-09 | confirmed
+Fairfax County, VA | county | suspended | 2026-09 | confirmed|dedup
+Floyd County, VA | county | not_renewed | 2026-07 | confirmed
+Giles County, VA | county | canceled | 2026-08-27 | confirmed
+Goochland County, VA | county | suspended | 2026-08 | confirmed|dedup
+Goochland County, VA | county | suspended | 2026-08-27 | confirmed
+Halifax County, VA | county | suspended | 2026-08-28 | confirmed
+Halifax County, VA | county | suspended | 2026-08-28 | confirmed|dedup
+Harrisonburg, VA | place | canceled | 2026-07-28 | confirmed
+Harrisonburg, VA | place | canceled | 2026-07-28 | confirmed|dedup
+Henry County, VA | county | not_renewed | 2026-08-14 | confirmed
+Henry County, VA | county | suspended | 2026-08-14 | confirmed
+King William County, VA | county | canceled | 2026-08 | confirmed
+King William County, VA | county | canceled | 2026-08 | confirmed|dedup
+Lynchburg, VA | place | suspended | 2026-08-19 | confirmed
+Lynchburg, VA | place | canceled | 2026-09-03 | confirmed
+Lynchburg, VA | place | not_renewed | 2026-09-03 | confirmed|dedup
+Martinsville, VA | place | not_renewed | 2026-09 | confirmed
+Montgomery County, VA | county | suspended | 2026-09-03 | confirmed
+Montgomery County, VA | county | suspended | 2026-09-03 | confirmed|dedup
+Staunton, VA | place | canceled | 2025-12-22 | confirmed
+Warrenton, VA | place | declined_to_adopt | 2025-10-14 | confirmed
+Wythe County, VA | county | canceled | 2026-09-01 | confirmed
+Wythe County, VA | county | canceled | 2026-09-01 | confirmed|dedup
+Wytheville, VA | place | suspended | 2026-09-02 | confirmed
+Wytheville, VA | place | suspended | 2026-09-02 | confirmed|dedup
+Edmonds, WA | place | canceled | 2026-05-26 | confirmed
+Everett, WA | place | suspended | 2026-02-25 | confirmed
+Gig Harbor, WA | place | declined_to_adopt | 2025-03-24 | confirmed
+Lynnwood, WA | place | suspended | 2025-10-30 | confirmed
+Mount Vernon, WA | place | suspended | 2026-06-24 | confirmed
+Mountlake Terrace, WA | place | canceled | 2025-12-04 | confirmed
+Olympia, WA | place | suspended | 2025-12-02 | confirmed
+Pierce County, WA | county | suspended | 2026-03 | confirmed
+Prosser, WA | place | suspended | 2026-01-26 | confirmed
+Redmond, WA | place | suspended | 2025-11 | confirmed
+Renton, WA | place | suspended | 2026-05-04 | confirmed
+Sedro-Woolley, WA | place | suspended | 2025-06 | confirmed
+Shoreline, WA | place | declined_to_adopt | 2026-05 | unconfirmed
+Skamania County, WA | county | canceled | 2025-11-12 | confirmed
+Spokane County, WA | county | suspended | 2026-04-01 | confirmed
+Stanwood, WA | place | suspended | 2025-05 | confirmed
+Walla Walla, WA | place | canceled | 2026-01 | confirmed
+Wenatchee, WA | place | suspended | 2025-12 | unconfirmed
+Appleton, WI | place | canceled | 2026-05-06 | confirmed
+Ashland, WI | place | not_renewed | 2026-06 | confirmed
+Clark County, WI | county | canceled | 2026-09-10 | confirmed
+Cottage Grove, WI | place | canceled | 2026-09-21 | confirmed
+Cudahy, WI | other | canceled | 2026-08 | not_a_decision
+Dane County, WI | county | not_renewed | 2026-04-16 | confirmed
+De Pere, WI | place | not_renewed | 2026-09-14 | confirmed
+Fitchburg, WI | place | canceled | 2026-05 | confirmed
+Fond du Lac, WI | place | canceled | 2026-09-04 | confirmed
+Fond du Lac, WI | place | suspended | 2026-09-04 | confirmed
+Fond du Lac County, WI | county | canceled | 2026-09-04 | confirmed
+Fond du Lac County, WI | county | suspended | 2026-09-04 | confirmed
+Fox Crossing, WI | place | suspended | 2026-09-04 | confirmed
+Fox Crossing, WI | place | suspended | 2026-09-04 | confirmed|dedup
+Grand Chute, WI | place | replaced_vendor | 2026-06-02 | confirmed
+Jefferson County, WI | county | suspended | 2026-09-10 | confirmed
+Jefferson County, WI | county | suspended | 2026-09-10 | confirmed|dedup
+Kaukauna, WI | place | not_renewed | 2026-05 | confirmed
+Kenosha, WI | place | replaced_vendor | 2026-09-02 | confirmed
+Kenosha, WI | place | replaced_vendor | 2026-09-02 | confirmed|dedup
+Lake Mills, WI | place | canceled | 2026-09-15 | confirmed
+Madison, WI | other | not_renewed | 2026-07-03 | not_a_decision
+Manawa, WI | place | canceled | 2026-09 | confirmed
+Manitowoc, WI | place | not_renewed | 2026-09-25 | confirmed
+Manitowoc, WI | place | not_renewed | 2026-09-25 | confirmed|dedup
+Marinette, WI | place | canceled | 2026-09-17 | confirmed
+McFarland, WI | place | declined_to_adopt | 2026-05 | confirmed
+Menasha, WI | place | canceled | 2026-09-08 | confirmed
+Menasha, WI | place | canceled | 2026-09-08 | confirmed|dedup
+Milwaukee County, WI | county | not_renewed | 2026-09 | confirmed
+Monona, WI | place | suspended | 2026-05-04 | confirmed
+Neenah, WI | place | suspended | 2026-09-04 | confirmed
+Neenah, WI | place | canceled | 2026-09-16 | confirmed
+North Fond du Lac, WI | place | canceled | 2026-09-04 | confirmed
+North Fond du Lac, WI | place | suspended | 2026-09-04 | confirmed
+Oconomowoc, WI | place | canceled | 2026-09-15 | confirmed
+Oneida County, WI | county | canceled | 2026-08-25 | confirmed
+Oshkosh, WI | place | not_renewed | 2026-04-22 | confirmed
+Racine, WI | place | canceled | 2026-09-15 | confirmed
+Racine, WI | place | canceled | 2026-09-15 | confirmed|dedup
+Racine County, WI | county | canceled | 2026-09-04 | confirmed
+Racine County, WI | county | canceled | 2026-09-04 | confirmed|dedup
+Ripon, WI | place | canceled | 2026-09-04 | confirmed
+Ripon, WI | place | suspended | 2026-09-04 | confirmed
+Sheboygan, WI | place | canceled | 2026-09-08 | confirmed
+Stevens Point, WI | place | suspended | 2026-09-04 | confirmed
+Stevens Point, WI | place | suspended | 2026-09-08 | confirmed|dedup
+Stoughton, WI | place | canceled | 2026-07-28 | confirmed
+Sturgeon Bay, WI | place | not_renewed | 2026-04-07 | confirmed
+Sun Prairie, WI | place | not_renewed | 2026-09 | unconfirmed
+Verona, WI | place | not_renewed | 2025-11-10 | confirmed
+Waukesha, WI | place | not_renewed | 2026-09-15 | confirmed
+Waunakee, WI | place | suspended | 2026-09 | confirmed
+Waupaca, WI | place | suspended | 2026-09 | unconfirmed
+Waupaca County, WI | county | suspended | 2026-09-08 | confirmed
+Waupaca County, WI | county | suspended | 2026-09-08 | confirmed|dedup
+Waupun, WI | place | canceled | 2026-09-04 | confirmed
+Waupun, WI | place | suspended | 2026-09-04 | confirmed
+Wautoma, WI | place | suspended | 2026-09 | unconfirmed
+West Salem, WI | place | canceled | 2026-08 | confirmed
+Winnebago County, WI | county | suspended | 2026-09-04 | confirmed
+Winnebago County, WI | county | suspended | 2026-09-04 | confirmed|dedup
+Winneconne, WI | place | suspended | 2026-09-04 | confirmed
+Winneconne, WI | place | suspended | 2026-09-04 | confirmed|dedup
+Glenrock, WY | place | suspended | 2026-09 | confirmed
+Green River, WY | place | declined_to_adopt | 2026-07-07 | confirmed

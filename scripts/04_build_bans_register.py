@@ -84,8 +84,11 @@ def load(pattern: str) -> pd.DataFrame:
         missing = set(COLS) - set(d.columns)
         if missing:
             raise SystemExit(f"{f.name}: missing columns {sorted(missing)}")
-        frames.append(d[COLS].assign(batch=f.stem))
-    return pd.concat(frames, ignore_index=True) if frames else pd.DataFrame(columns=COLS + ["batch"])
+        # round-2 files add an explicit state_trigger column (yes / no / unclear)
+        st = d["state_trigger"] if "state_trigger" in d.columns else pd.Series("", index=d.index)
+        frames.append(d[COLS].assign(state_trigger=st, batch=f.stem))
+    return (pd.concat(frames, ignore_index=True) if frames
+            else pd.DataFrame(columns=COLS + ["state_trigger", "batch"]))
 
 
 # ---- 1. stack + validate ----------------------------------------------------------
@@ -106,8 +109,35 @@ out = out.join(orig, on="row_id")
 out["origin"] = "register"
 gap["origin"] = "new_" + gap.batch.str.replace("gap_", "", regex=False)
 reg = pd.concat([out, gap], ignore_index=True)
-for c in COLS:
+# Round-2 re-verification of rows left unconfirmed: the later reading replaces
+# the earlier one, keeping the row's id, origin and original coding.
+recheck = load("recheck_*.csv").drop_duplicates("row_id", keep="last").set_index("row_id")
+reg["rechecked"] = reg.row_id.isin(recheck.index).astype(int)
+missing_rc = set(recheck.index) - set(reg.row_id)
+if missing_rc:
+    problems.append(f"recheck rows with no original: {sorted(missing_rc)}")
+for c in COLS[1:] + ["state_trigger"]:
+    hit = reg.row_id.isin(recheck.index)
+    reg.loc[hit, c] = reg.loc[hit, "row_id"].map(recheck[c])
+# Field-level corrections from the reconciliation pass (one line per changed field),
+# applied in file order so a later file wins. `partial` is introduced here: a decision
+# covering only part of a program (state-road cameras only, new installs only, ...).
+reg["partial"] = ""
+FIELDS = set(COLS[1:]) | {"state_trigger", "partial"}
+for f in sorted(VERIFY.glob("corrections_*.csv")):
+    corr = pd.read_csv(f, dtype=str, keep_default_na=False)
+    for _, c in corr.iterrows():
+        hit = reg.row_id == c.row_id
+        if not hit.any() or c.field not in FIELDS:
+            problems.append(f"{f.name}: cannot apply {c.row_id}.{c.field}")
+            continue
+        reg.loc[hit, c.field] = c.value
+        reg.loc[hit, "corrected"] = "1"
+reg["corrected"] = reg.get("corrected", pd.Series("", index=reg.index)).fillna("")
+for c in COLS + ["state_trigger", "partial"]:
     reg[c] = clean(reg[c])
+reg["state_trigger"] = reg.state_trigger.str.lower()
+reg["partial"] = reg.partial.str.lower().eq("yes").astype(int)
 for c in ("status", "level", "action", "permanence", "body", "reason", "reason_secondary", "confidence"):
     reg[c] = reg[c].str.lower()
 for c, ok in VOCAB.items():
@@ -200,14 +230,10 @@ res = reg.apply(resolve, axis=1, result_type="expand")
 reg["geoid"], reg["geo_type"], reg["geoid_problem"] = res[0], res[1], res[2]
 
 # ---- 3. scope ---------------------------------------------------------------------
-reg["in_scope"] = (
-    reg.status.eq("confirmed")
-    & reg.action.isin(ANY)
-    & reg.level.isin(["place", "county"])
-    & reg.geoid.ne("")
-    & (reg.decision_date.eq("") | reg.decision_date.le(CUTOFF + "~"))
-)
 reg["after_cutoff"] = reg.decision_date.gt(CUTOFF + "~") & reg.decision_date.ne("")
+eligible = (reg.status.eq("confirmed") & reg.action.isin(ANY)
+            & reg.level.isin(["place", "county"]) & reg.geoid.ne(""))
+reg["in_scope"] = eligible & ~reg.after_cutoff
 # The same decision reported twice (register + a gap search, or two gap searches
 # covering the same state): same jurisdiction, same outcome category, dated within
 # 45 days of each other (or one undated). Keep the best-evidenced report. A pause
@@ -220,7 +246,8 @@ reg["_r"] = (reg.confidence.map({"high": 0, "medium": 1, "low": 2}).fillna(3)
              + reg.origin.ne("register") * 0.5)  # ties go to the original register row
 reg = reg.sort_values(["_r", "row_id"])
 reg["dup_of"] = ""
-for _, grp in reg[reg.in_scope].groupby(["geo_type", "geoid", "category"]):
+# deduplicated on each side of the cutoff separately, so October rows are clean too
+for _, grp in reg[eligible.reindex(reg.index)].groupby(["geo_type", "geoid", "category", "after_cutoff"]):
     kept: list = []
     for i, r in grp.iterrows():
         match = next((k for k in kept if pd.isna(r._date) or pd.isna(reg.at[k, "_date"])
@@ -245,9 +272,11 @@ STATE_TRIGGER = {"FL": r"fdot|department of transportation|dot permit|state-road
 # Renton (P132) is coded as the council's own vote, not the earlier police compliance pause.
 NOT_STATE_TRIGGERED = {"P124", "P133", "P135", "P132"}
 txt = (reg.notes + " " + reg.evidence_quote).str.lower()
+# Round-2 verifiers coded state_trigger explicitly; their yes/no wins over the keyword rule.
 reg["state_triggered"] = [
+    1 if flag == "yes" else 0 if flag == "no" else
     int(bool(STATE_TRIGGER.get(st)) and bool(re.search(STATE_TRIGGER[st], t)) and rid not in NOT_STATE_TRIGGERED)
-    for st, t, rid in zip(reg.corrected_state, txt, reg.row_id)]
+    for st, t, rid, flag in zip(reg.corrected_state, txt, reg.row_id, reg.state_trigger)]
 reg = reg.sort_values(["level", "corrected_state", "corrected_city", "decision_date"])
 reg["dv_pause"] = reg.action.isin(PAUSE).astype(int)
 reg["dv_ban"] = reg.action.isin(BAN).astype(int)
@@ -265,9 +294,14 @@ assert (s.geoid.str.len() == width).all(), s[s.geoid.str.len() != width][["row_i
 assert not s.decision_date.gt(CUTOFF + "~").any()
 assert s.status.eq("confirmed").all()
 s["dv_any_local"] = s.dv_any * (1 - s.state_triggered)
+# robustness outcomes: whole-program decisions only; high-confidence evidence only;
+# Flock contracts only (vendor coded Flock or not stated)
+s["dv_any_whole"] = s.dv_any * (1 - s.partial)
+s["dv_any_highconf"] = s.dv_any * s.confidence.eq("high")
+s["dv_any_flock"] = s.dv_any * s.vendor.str.lower().isin(["flock", "unknown", ""])
 quick = s.assign(place=s.corrected_city, state=s.corrected_state, action_ff=s.action.map(FF),
                  trigger=s.reason, source=s.evidence_url)
-quick[["level", "geo_type", "geoid", "place", "state", "decision_date", "action", "action_ff", "permanence", "state_triggered", "body",
+quick[["level", "geo_type", "geoid", "place", "state", "decision_date", "action", "action_ff", "permanence", "state_triggered", "partial", "body",
        "vote_for", "vote_against", "trigger", "reason_secondary", "vendor", "reversed", "confidence",
        "origin", "source"]].to_csv(OUT_DIR / "bans_quick.csv", index=False)
 
@@ -276,7 +310,8 @@ def per_unit(geo_type: str, col: str) -> pd.DataFrame:
     d = s[s.geo_type == geo_type]
     g = d.groupby("geoid").agg(
         dv_pause=("dv_pause", "max"), dv_ban=("dv_ban", "max"), dv_any=("dv_any", "max"),
-        dv_any_local=("dv_any_local", "max"),
+        dv_any_local=("dv_any_local", "max"), dv_any_whole=("dv_any_whole", "max"),
+        dv_any_highconf=("dv_any_highconf", "max"), dv_any_flock=("dv_any_flock", "max"),
         n_decisions=("action", "size"),
         first_decision=("decision_date", lambda x: min([v for v in x if v], default="")),
         actions=("action", lambda x: ";".join(sorted(set(x)))),
@@ -285,6 +320,11 @@ def per_unit(geo_type: str, col: str) -> pd.DataFrame:
     return g.reset_index()
 
 
+# Confirmed decisions after the cutoff, kept so the cutoff can move without re-collecting.
+post = reg[reg.status.eq("confirmed") & reg.after_cutoff & reg.action.isin(ANY) & reg.geoid.ne("")
+           & reg.level.isin(["place", "county"])]
+post[["level", "geo_type", "geoid", "corrected_city", "corrected_state", "decision_date", "action", "state_triggered",
+      "reason", "confidence", "evidence_url"]].to_csv(OUT_DIR / "bans_after_cutoff.csv", index=False)
 per_unit("place", "place_geoid").to_csv(OUT_DIR / "place_decisions.csv", index=False)
 per_unit("cousub", "cousub_geoid").to_csv(OUT_DIR / "cousub_decisions.csv", index=False)
 per_unit("county", "county_fips").to_csv(OUT_DIR / "county_decisions.csv", index=False)
@@ -306,7 +346,9 @@ lines = [
     "## In scope", "",
     md(s.groupby(["geo_type", "action"]).size().to_frame("decisions")), "",
     f"Duplicate reports collapsed: {int(reg.dup_of.ne('').sum())}",
-    f"State-triggered (FL DOT / TX funding pause / WA SB 6002): "
+    f"Partial actions: {int(s.partial.sum())} · high-confidence: {int(s.confidence.eq('high').sum())} · "
+    f"non-Flock vendor: {int((~s.vendor.str.lower().isin(['flock', 'unknown', ''])).sum())}",
+    f"State-triggered (state law, order or request): "
     + ", ".join(f"{k} {v}" for k, v in s[s.state_triggered == 1].groupby("corrected_state").size().items()),
     "Unique jurisdictions: " + " · ".join(f"{k} {v}" for k, v in s.groupby("geo_type").geoid.nunique().items()),
     f"Confirmed decisions dated after the cutoff (excluded): {int((reg.status.eq('confirmed') & reg.after_cutoff).sum())}",
