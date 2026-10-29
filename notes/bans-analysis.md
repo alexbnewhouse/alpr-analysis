@@ -86,30 +86,52 @@ inferred "expirations", approval dates instead of end dates).
 - Adoption/intensity tables (county 2,468 / place 17,323 / tract 69,771) were **not** re-run here; Stone's current
   model code is not in the handoff.
 
-## Results (Firth logit, 27,876 places, 394 acted; base rate 1.41%)
+## Results (Firth logit, full place specification, 26,926 places, 394 acted; base rate 1.46%) — re-estimated 2026-10-29
 
-1-SD average marginal effects, percentage points (`output/tables/ban_model_ame.csv`):
+**Specification.** The first version used an 11-covariate short set (any camera, log cameras, log pop, log income,
+poverty, share Black, share Hispanic, Trump 2020, incorporated, own PD, county also restricted). That was sized for
+the ~45 events Stone's handoff expected. With 394 / 251 / 128 events the models now carry the draft's full place
+adoption specification (`tab:crosslevel-adoption`, place column) plus camera exposure and county also restricted:
+21 slopes, about 19 events per parameter for any restriction and 12 for bans. **Pause** (128 events) keeps the short
+set plus share Asian (12 slopes, ~10.7 per parameter). **Change in white share is omitted**: it is not in the handoff
+frame and needs ACS B02001 for 2015 and 2020 (no Census API key here). Listwise N falls from 27,876 to 26,926 (LEHD
+job variables); no restricting place is lost. Race reference category: everyone not counted as Black alone, Asian
+alone, or Hispanic (the old note's "white non-Hispanic" was wrong).
+
+1-SD average marginal effects, percentage points (`output/tables/ban_model_ame.csv`; pause uses its own 12-covariate model):
 
 | | any | ban | pause | any, local |
 |---|---|---|---|---|
-| Any camera (0→1) | +1.94 | +1.44 | +0.61 | +1.84 |
-| County also restricted (0→1) | +2.20 | +1.25 | +1.12 | +0.97 |
-| Log population | +1.99 | +1.01 | +0.71 | +1.75 |
-| Incorporated (0→1) | +1.34 | +0.90 | +0.37 | +1.10 |
-| Share Black | −0.72 | −0.46 | −0.24 | −0.69 |
-| Trump 2020 share | −0.62 | −0.44 | −0.16 | −0.62 |
-| Log median HH income | −0.55 | −0.35 | −0.26 | −0.49 |
-| Log cameras (intensity) | −0.20 | −0.10 | +0.01 | −0.24 |
+| Any camera (0→1) | +1.89 | +1.45 | +0.62 | +1.80 |
+| County also restricted (0→1) | +2.19 | +1.27 | +1.14 | +0.99 |
+| Log population | +1.44 | +0.55 | +0.71 | +0.99 |
+| Incorporated (0→1) | +1.40 | +0.95 | +0.37 | +1.14 |
+| Share Black | −0.76 | −0.49 | −0.25 | −0.73 |
+| Trump 2020 share | −0.72 | −0.51 | −0.19 | −0.70 |
+| Share Hispanic | −0.35 | −0.25 | −0.10 | −0.36 |
+| Log density squared | −0.33 | −0.21 | | −0.24 |
+| Log median HH income | −0.32 | −0.26 | −0.23 | −0.32 |
+| Poverty rate | −0.32 | −0.23 | −0.18 | −0.30 |
+| Share renter-occupied | +0.31 | +0.19 | | +0.30 |
+| Share Asian | −0.19 | −0.09 | −0.08 | −0.15 |
+| Log cameras (intensity) | −0.21 | −0.11 | +0.02 | −0.24 |
 
-Reading: against a 1.41% base rate, a 1-SD more-Trump place is ~45% less likely to restrict; restriction
-is a large-place, incorporated, already-adopted phenomenon that clusters within counties (the county
-coefficient halves without state-triggered decisions — the Florida wave was county-wide); conditional on
-adopting, *more* cameras predicts *less* restriction — but that intensity term is the fragile one: significant
-for any restriction and the local / whole-program / Flock-only variants, not for bans alone, with state FE,
-high-confidence evidence only, or adopters only. Everything else (adoption, size, incorporation, county
-clustering, Trump share, share Black, income) holds with state FE (`tab:ban-models` col. 4) and in all five
-robustness columns.
-Descriptive associations only. (The round-1 version, 260 events, had the same signs and significance.)
+Reading: against a 1.46% base rate, a 1-SD more-Trump place is about half (49%) as likely to restrict. Restriction
+is a large-place, incorporated, already-adopted phenomenon that clusters within counties (county coefficient 1.19 →
+0.70 without state-triggered decisions). Same as before: Trump, share Black, share Hispanic, income, size,
+adoption and county clustering are significant in every column of both tables, state FE included; incorporation is
+significant everywhere except the pause column; own PD and own police spending are never significant; poverty drops out under state FE
+(and is only p < .1 for bans, Flock-only and adopters-only). The intensity term is still fragile: significant for
+any, local, whole-program, Flock-only; not for ban, pause, state FE, high-confidence, or adopters.
+
+New in the full spec: share Asian is negative (significant in every column; p < .1 for bans and high-confidence);
+renter share is positive for any restriction (p < .05) and in four of five robustness columns, but not for bans,
+under state FE, or with high-confidence evidence; log density squared is negative throughout (restriction is least
+likely at the density extremes). Log land area is positive for bans (p < .05) and in four robustness columns but not
+for any restriction or under state FE. Roads and employment ratio are null; median age is significant only under
+state FE and (p < .1) local initiative; retail/food share is p < .1 in four columns. Adding these covariates shrinks log population (0.59 → 0.47) and log income (−1.22 →
+−0.63) and makes Trump larger (−3.34 → −4.01).
+Descriptive associations only.
 
 ## Caveats to carry into the text
 

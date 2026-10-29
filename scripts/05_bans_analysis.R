@@ -194,43 +194,56 @@ dl <- c(head(dl, -1), "\\midrule",
 writeLines(dl, "output/tables/tab_ban_descriptives.tex")
 
 # ---- table 3: models --------------------------------------------------------------
+# Full specification = the draft's place adoption model (tab:crosslevel-adoption, place column),
+# less change in white share (not in the handoff frame), plus camera exposure and county also restricted.
 X <- c(has_camera = "Any camera (adoption)", log_cameras = "Log cameras (intensity)",
-       log_pop = "Log population", log_income = "Log median HH income",
-       pct_below_poverty = "Poverty rate", pct_black = "Share Black", pct_hispanic = "Share Hispanic",
-       trump_2020 = "Trump 2020 vote share", incorporated = "Incorporated", own_pd = "Own police department",
-       county_restricted = "County also restricted")
+       pct_black = "Share Black", pct_hispanic = "Share Hispanic", pct_asian = "Share Asian",
+       pct_renter_occupied = "Share renter-occupied", median_age = "Median age",
+       log_pop = "Log population", log_area = "Log land area", ld_c_sq = "Log density squared (centred)",
+       log_road_km = "Log arterial road km", has_arterial = "Has arterial road",
+       employment_ratio = "Employment ratio", pct_jobs_retail_food = "Retail/food job share",
+       incorporated = "Incorporated", own_pd = "Own police department",
+       log_own_police_pc = "Log own police spending p.c.", county_restricted = "County also restricted",
+       log_income = "Log median HH income", pct_below_poverty = "Poverty rate",
+       trump_2020 = "Trump 2020 vote share")
 BLOCKS <- list("Camera exposure" = c("has_camera", "log_cameras"),
-               "Structural and economic" = c("log_pop", "log_income", "pct_below_poverty"),
-               "Demographic composition" = c("pct_black", "pct_hispanic"),
-               "Politics" = "trump_2020",
-               "Governance" = c("incorporated", "own_pd", "county_restricted"))
+               "Demographic composition" = c("pct_black", "pct_hispanic", "pct_asian", "pct_renter_occupied", "median_age"),
+               "Structural features" = c("log_pop", "log_area", "ld_c_sq", "log_road_km", "has_arterial"),
+               "Land use" = c("employment_ratio", "pct_jobs_retail_food"),
+               "Governance and police capacity" = c("incorporated", "own_pd", "log_own_police_pc", "county_restricted"),
+               "Economic" = c("log_income", "pct_below_poverty"),
+               "Politics" = "trump_2020")
+# Pause (128 events) keeps the earlier short set plus share Asian: 12 slopes.
+X_PAUSE <- c("has_camera", "log_cameras", "pct_black", "pct_hispanic", "pct_asian", "log_pop", "incorporated",
+             "own_pd", "county_restricted", "log_income", "pct_below_poverty", "trump_2020")
+# One listwise sample for every column, so Ns and events are comparable across the table.
 md <- p %>% filter(if_all(all_of(names(X)), ~ !is.na(.x)))
-f_of <- function(y) reformulate(names(X), response = y)
 
 fit_firth <- function(y, d = md, x = names(X)) {
   fm <- reformulate(x, response = y)
   m <- do.call(logistf, list(formula = fm, data = d, plconf = NULL))
   list(b = coef(m), se = sqrt(diag(vcov(m))), p = m$prob, n = nrow(d), ev = sum(d[[y]]),
-       ll = m$loglik[["full"]], est = "Firth", states = "48 + DC")
+       ll = m$loglik[["full"]], est = "Firth", states = "48 + DC", k = length(x))
 }
-fits <- lapply(c(any = "dv_any", ban = "dv_ban", pause = "dv_pause", local = "dv_any_local",
+fits <- lapply(c(any = "dv_any", ban = "dv_ban", local = "dv_any_local",
                  whole = "dv_any_whole", highconf = "dv_any_highconf", flock = "dv_any_flock"), fit_firth)
+fits$pause <- fit_firth("dv_pause", x = X_PAUSE)
 # adopters only: the risk set for reversal, so the adoption dummy drops out
 fits$adopters <- fit_firth("dv_any", md %>% filter(has_camera == 1), setdiff(names(X), "has_camera"))
 fe <- feglm(as.formula(paste("dv_any ~", paste(names(X), collapse = " + "), "| state_fips")),
             data = md, family = binomial, cluster = ~state_fips)
 fe_fit <- list(b = coef(fe), se = se(fe), p = pvalue(fe), n = nobs(fe), ev = sum(fe$y), ll = as.numeric(logLik(fe)),
-               est = "Logit", states = as.character(length(unique(md$state_fips[obs(fe)]))))
+               est = "Logit", states = as.character(length(unique(md$state_fips[obs(fe)]))), k = length(coef(fe)))
 
 # 1-SD average marginal effects (observed-value approach, Hanmer & Kalkan 2013),
 # predictions from the intercept-corrected Firth fit (FLIC) so rare-event
 # probabilities are not inflated; binaries move 0 -> 1.
-ame <- function(y) {
-  fm <- f_of(y)
+ame <- function(y, x = names(X)) {
+  fm <- reformulate(x, response = y)
   m <- do.call(flic, list(formula = fm, data = md))
   mm <- model.matrix(fm, md)
   pr <- function(M) plogis(drop(M %*% coef(m)))
-  bind_rows(lapply(names(X), function(v) {
+  bind_rows(lapply(x, function(v) {
     bin <- all(md[[v]] %in% c(0, 1))
     lo <- mm; hi <- mm
     if (bin) { lo[, v] <- 0; hi[, v] <- 1 } else hi[, v] <- hi[, v] + sd(md[[v]])
@@ -239,7 +252,7 @@ ame <- function(y) {
            ame_pp = 100 * mean(pr(hi) - pr(lo)), base_rate_pct = 100 * mean(md[[y]]))
   }))
 }
-ames <- bind_rows(lapply(c("dv_any", "dv_ban", "dv_pause", "dv_any_local"), ame))
+ames <- bind_rows(ame("dv_any"), ame("dv_ban"), ame("dv_pause", X_PAUSE), ame("dv_any_local"))
 write_csv(ames, "output/tables/ban_model_ame.csv")
 
 star <- function(p) ifelse(p < .01, "$^{***}$", ifelse(p < .05, "$^{**}$", ifelse(p < .1, "$^{*}$", "")))
@@ -247,11 +260,11 @@ num <- function(x) { d <- if (abs(x) < .01) 4 else 3; s <- formatC(x, format = "
 cell <- function(f, v) if (v %in% names(f$b)) sprintf("%s%s (%s)", num(f$b[[v]]), star(f$p[[v]]), num(f$se[[v]])) else "--"
 row_of <- function(cols, f) paste(sapply(cols, f), collapse = " & ")
 
-model_table <- function(cols, head1, head2, caption, label, note, file) {
+model_table <- function(cols, head1, head2, caption, label, note, file, size = "\\footnotesize") {
   k <- length(cols)
   tl <- c("% Generated by scripts/05_bans_analysis.R -- do not edit by hand.",
           "\\begin{table}[htbp]\\centering", sprintf("\\caption{%s}", caption), sprintf("\\label{%s}", label),
-          "\\footnotesize", "\\setlength{\\tabcolsep}{2pt}", "\\renewcommand{\\arraystretch}{1.15}",
+          size, "\\setlength{\\tabcolsep}{2pt}", "\\renewcommand{\\arraystretch}{1.15}",
           sprintf("\\begin{tabular*}{\\textwidth}{@{\\extracolsep{\\fill}}l%s@{}}", strrep("c", k)), "\\toprule",
           sprintf(" & %s \\\\", paste(head1, collapse = " & ")), sprintf(" & %s \\\\", paste(head2, collapse = " & ")),
           sprintf(" & %s \\\\", paste(sprintf("(%d)", seq_len(k)), collapse = " & ")), "\\midrule")
@@ -261,6 +274,7 @@ model_table <- function(cols, head1, head2, caption, label, note, file) {
   }
   c(tl, "\\midrule",
     sprintf("Constant & %s \\\\", row_of(cols, function(f) cell(f, "(Intercept)"))),
+    sprintf("Covariates & %s \\\\", row_of(cols, function(f) f$k)),
     sprintf("Places & %s \\\\", row_of(cols, function(f) fmt_int(f$n))),
     sprintf("Places that acted & %s \\\\", row_of(cols, function(f) fmt_int(f$ev))),
     sprintf("Estimator & %s \\\\", row_of(cols, function(f) f$est)),
@@ -274,26 +288,30 @@ NOTE_COMMON <- paste0("\\textit{Notes.} Coefficients on the log-odds scale; stan
                       "$^{*}$p$<$0.1; $^{**}$p$<$0.05; $^{***}$p$<$0.01. ",
                       "Firth columns: penalised-likelihood logit (rare events), $p$-values from the penalised likelihood-ratio test. ",
                       "Universe: the place universe of Table~\\ref{tab:descriptives}, less places without 2020 vote data (Alaska, Hawaii, and places with no ",
-                      "reallocated returns). Camera exposure enters as both margins of the hurdle: whether the place has any mapped camera, and how many. ",
+                      "reallocated returns) or without LEHD employment ratio or retail/food job share; every column uses this sample. ",
+                      "Full specification: the place adoption model of Table~\\ref{tab:crosslevel-adoption} without change in white share, ",
+                      "which is not yet built for this sample, plus camera exposure and county also restricted. ",
+                      "The omitted race category is everyone not Black, Hispanic or Asian. Camera exposure enters as both margins of the hurdle: whether the place has any mapped camera, and how many. ",
                       "Descriptive associations, not causal effects.")
 model_table(list(fits$any, fits$ban, fits$pause, fe_fit),
             c("Any", "", "", "Any,"), c("restriction", "Ban", "Pause", "state FE"),
             "Which places restricted ALPRs? Penalised logit, place level", "tab:ban-models",
             paste0(NOTE_COMMON, " \\textit{Any restriction} = any confirmed pause, ban, or rejection through September 30, 2026; ",
                    "\\textit{Ban} = cancelled, not renewed, banned by ordinance, or cancelled to switch vendor; \\textit{Pause} = suspended pending review. ",
+                   "Columns 1, 2 and 4: full specification. Column 3: a shorter set (12 covariates) because pauses are fewer; -- marks a covariate not in the model. ",
                    "Column 4: ordinary logit with state fixed effects and state-clustered standard errors; states with no restricting place drop out. ",
                    "Robustness checks in Table~\\ref{tab:ban-models-robust}."),
             "output/tables/tab_ban_models.tex")
 model_table(list(fits$local, fits$whole, fits$highconf, fits$flock, fits$adopters),
             c("Local", "Whole", "High-confidence", "Flock", "Adopters"), c("initiative", "program", "evidence", "only", "only"),
             "Which places restricted ALPRs? Robustness of the any-restriction model", "tab:ban-models-robust",
-            paste0(NOTE_COMMON, " Outcome in every column: any restriction (Table~\\ref{tab:ban-models}, column 1), redefined as follows. ",
+            paste0(NOTE_COMMON, " Full specification in every column. Outcome in every column: any restriction (Table~\\ref{tab:ban-models}, column 1), redefined as follows. ",
                    "(1) Drops decisions that followed a state law or order (Table~\\ref{tab:ban-counts}). ",
                    "(2) Drops partial actions --- those covering only some cameras, only new installations, or only cameras on state roads. ",
                    "(3) Keeps only decisions whose source states the action and date explicitly (high confidence). ",
                    "(4) Drops decisions about a vendor other than Flock Safety. ",
                    "(5) Restricts the sample to places with at least one mapped camera, the risk set for reversal."),
-            "output/tables/tab_ban_models_robust.tex")
+            "output/tables/tab_ban_models_robust.tex", size = "\\fontsize{7.5}{9}\\selectfont")
 
 # ---- figure: timeline -------------------------------------------------------------
 pre <- sum(q$month < "2025-01" & q$month != "", na.rm = TRUE)

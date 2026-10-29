@@ -242,7 +242,10 @@ and townships are not Census places and are outside this universe (as the draft 
 their decisions are counted in Table `tab:ban-counts` only.
 
 **Model sample:** the universe less places without 2020 vote data (Alaska, Hawaii, and places with
-no reallocated returns): **27,876 places**, 394 with any restriction (base rate 1.41%).
+no reallocated returns) and places without LEHD employment ratio or retail/food job share (listwise on the
+full specification, §5.3): **26,926 places**, 394 with any restriction (base rate 1.46%), 251 bans, 128
+pauses. No restricting place is lost to the listwise deletion. Every column of both model tables uses this
+sample (the adopters-only column takes its 8,013 places with a camera).
 
 ### 5.3 Independent variables
 
@@ -255,7 +258,15 @@ All are on the scale used in the draft's place models unless noted.
 | **Log population** | log(population) | ACS 2019–2023 5-year (handoff frame) |
 | **Log median HH income** | log(median household income) | ACS 2019–2023 (handoff frame) |
 | **Poverty rate** | share below the poverty line (proportion) | ACS 2019–2023 |
-| **Share Black**, **Share Hispanic** | proportions; White non-Hispanic is the omitted reference | ACS 2019–2023 |
+| **Share Black**, **Share Hispanic**, **Share Asian** | proportions of the race total: Black alone, Hispanic (any race), Asian alone. These overlap (Black and Asian alone include Hispanic residents), so the reference is everyone not counted in any of the three: mostly white non-Hispanic, plus American Indian alone, multiracial and other non-Hispanic residents | ACS 2019–2023 (handoff frame) |
+| **Share renter-occupied** | renter-occupied / occupied housing units | ACS 2019–2023 |
+| **Median age** | years | ACS 2019–2023 |
+| **Log land area** | log(land area, km²) | handoff frame |
+| **Log density squared (centred)** | (log(population / land area) − its mean over the 28,298-place universe)² | handoff frame |
+| **Log arterial road km**, **Has arterial road** | log of primary + secondary road km, 0 where none; indicator for any | TIGER roads (handoff frame) |
+| **Employment ratio** | jobs / (jobs + resident workers) | LEHD LODES (handoff frame) |
+| **Retail/food job share** | retail and accommodation/food jobs / all jobs | LEHD LODES (handoff frame) |
+| **Log own police spending p.c.** | log(1 + own police operations $ per capita), 0 without own police | 2022 Census of Governments |
 | **Trump 2020 vote share** | Trump votes / all presidential votes, 2020 | VEST 2020 precinct returns reallocated to 2020 block groups ("RLCR", main method, contiguous US) **[cite]**; block-group votes summed over block groups whose interior point lies in the place; a place containing no block-group interior point takes the share of the block group containing the place's interior point (`scripts/03_place_politics_governance.py`) |
 | **Incorporated** | 1 unless the place is a Census-designated place (LSAD 57) | Census 2023 cartographic place file |
 | **Own police department** | 1 if the place's government reports current police operations spending (item E62 > 0) | 2022 Census of Governments, Finance individual-unit file (`scripts/01_cog2022_police.R`) |
@@ -267,16 +278,24 @@ place-level 1 − Democratic share on 6,201 cities **[cite]**; incorporated 0.66
 spending per capita 2.424 vs 2.416. **Own police department differs: 0.480 here vs 0.367 in the draft**,
 which uses an FBI-roster flag; the draft's column should replace this one when available.
 
-Descriptive-table-only variables (Table `tab:ban-descriptives`) follow the draft's definitions: share
-Asian, share renter-occupied, median age, log land area, log arterial road km (log of km, 0 where the
-place has no arterial road) and an arterial-road indicator, employment ratio, retail/food job share, log
-own police spending per capita (log(1 + $ per capita), 0 without own police), and AIP MRP ideology
-(2017–2021 survey period; cities above roughly 20,000 residents) **[cite]**.
+AIP MRP ideology (2017–2021 survey period; cities above roughly 20,000 residents) **[cite]** appears in
+Table `tab:ban-descriptives` only.
 
-Kept deliberately small: with 394 events and 11 slopes there are ~36 events per parameter; the pause
-outcome (128 events) is near the conventional floor. Excluded as collinear with income or as
-consequences of urban form, following the handoff's adoption models: per-capita income, home value,
-rent, education, and commuting variables.
+**Full specification.** The models use the draft's place adoption specification (Table
+`tab:crosslevel-adoption`, place column) so that adoption and restriction are estimated on the same
+covariates, plus camera exposure and county also restricted: 21 slopes. **Change in white share** (pp,
+ACS 2011–2015 to 2016–2020) is in the draft's adoption model but not in the handoff frame; it needs ACS
+B02001_002E / B02001_001E for 2015 and 2020 by place, and was not built (no Census API key on this
+machine, 2026-10-29). It is omitted from every column and the table notes say so.
+
+Events per parameter (slopes): any restriction 394 / 21 ≈ 19; ban 251 / 21 ≈ 12; adopters only 354 / 20
+≈ 18. Pause has 128 events, too few for 21 slopes (≈ 6), so the pause column keeps the earlier short set
+plus share Asian: any camera, log cameras, share Black, share Hispanic, share Asian, log population,
+incorporated, own police department, county also restricted, log median household income, poverty rate,
+Trump 2020 share (12 slopes, ≈ 10.7 events per parameter).
+
+History: the first version of these models used that 11-covariate short set for every outcome, on the
+expectation of about 45 events (Stone's handoff). With 394 events that rationale no longer holds.
 
 ---
 
@@ -288,8 +307,10 @@ For place *i* and outcome *y* ∈ {any, ban, pause}:
 
   logit Pr(y_i = 1) = α + β₁·AnyCamera_i + β₂·log(1 + Cameras_i) + **x**_i′**γ**
 
-where **x** holds log population, log median household income, poverty rate, share Black, share
-Hispanic, Trump 2020 share, incorporated, own police department, and county also restricted.
+where **x** holds the rest of the full specification (§5.3) for columns 1, 2 and 4, and the 12-covariate
+pause set for column 3. Rows read in the draft's Table 2 block order: camera exposure; demographic
+composition; structural features; land use; governance and police capacity (county also restricted here);
+economic; politics. "--" marks a covariate not in that column's model.
 
 Camera exposure enters as both margins of the draft's hurdle — whether the place has any mapped
 camera, and how many — as the draft's notes ask ("include controls for the adoption and intensity of
@@ -301,15 +322,15 @@ cancelling places have no mapped camera because mapping is incomplete.
   covariance diagonal; *p*-values (and stars) come from the penalised likelihood-ratio test, so a star
   can differ from what coefficient/SE alone would suggest.
 - **Column 4: ordinary logit with state fixed effects** (`fixest::feglm`, binomial), standard errors
-  clustered by state. States with no restricting place drop out (42 states retained; 25,964 places).
+  clustered by state. States with no restricting place drop out (42 states retained; 25,060 places).
 
 ### 6.2 Robustness (Table `tab:ban-models-robust`)
 
 The column-1 model (any restriction, Firth) re-estimated with the outcome redefined: (1) local
 initiative only (`dv_any_local`); (2) whole-program decisions only (`dv_any_whole`); (3) high-confidence
 evidence only (`dv_any_highconf`); (4) Flock only (`dv_any_flock`); and (5) the sample restricted to
-places with at least one mapped camera — the risk set for reversal (8,032 places; the adoption dummy
-drops out).
+places with at least one mapped camera — the risk set for reversal (8,013 places; the adoption dummy
+drops out). All five use the full specification.
 
 ### 6.3 Marginal effects
 
@@ -317,7 +338,8 @@ Average marginal effects are reported in the text (`output/tables/ban_model_ame.
 observed-value approach of Hanmer and Kalkan (2013), as the draft does for adoption: each place's
 probability is predicted at its observed covariates, recomputed after raising one covariate by one
 standard deviation of the model sample (binary covariates: set 0, then 1), and the differences are
-averaged. Predictions use Firth's slopes with the intercept re-estimated (FLIC; `logistf::flic`),
+averaged. Each outcome uses its own model's covariates (the 12-covariate set for pauses; the full
+specification for any, ban and any-local). Predictions use Firth's slopes with the intercept re-estimated (FLIC; `logistf::flic`),
 because the Firth intercept inflates predicted probabilities for rare outcomes.
 
 ### 6.4 Interpretation
@@ -378,5 +400,5 @@ notes — is committed in `verification/` and is the record to audit.
   Alachua, Edgewater, Leesburg and Neptune Beach (FL) and Easthampton (MA).
 - **Coding judgments** with defensible alternatives are noted per row (e.g. a council resolution or
   executive order coded `ordinance_ban`; "tabled" coded `declined_to_adopt` vs `considered_no_action`).
-- **The camera intensity coefficient is fragile**: negative and significant for any restriction, but not
+- **The camera intensity coefficient is fragile** (unchanged in the full specification): negative and significant for any restriction, but not
   for bans alone, with state fixed effects, with high-confidence evidence only, or among adopters only.
